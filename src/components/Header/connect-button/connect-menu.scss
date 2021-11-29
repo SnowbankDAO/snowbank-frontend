@@ -1,0 +1,24 @@
+.connect-button{
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+    border-radius: 4px;
+    border: 1px solid #30363a;
+    padding: 12px 48px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    .connect-button-progress{
+      margin-left: 10px;
+      margin-top: 4px;
+    }
+  
+    p{
+      font-family: Montserrat Medium;
+      font-weight: 500;
+      font-size: 16px;
+      color: #30363a;
+      font-feature-settings: "ss01";
+    }
+  }

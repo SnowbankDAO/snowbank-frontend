@@ -1,0 +1,17 @@
+{
+  "short_name": "Snowbank DAO",
+  "start_url": ".",
+  "homepage": "./",
+  "name": "Snowbank DAO",
+  "launch_path": "/public/index.html",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "display": "browser",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
