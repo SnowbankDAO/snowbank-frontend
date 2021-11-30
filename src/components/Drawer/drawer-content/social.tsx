@@ -8,9 +8,9 @@ import DocsIcon from "../../../assets/icons/docs.svg";
 export default function Social() {
     return (
         <div className="social-row">
-            {/* <Link href="https://github.com/SnowbankDAO" target="_blank">
+            <Link href="https://github.com/SnowbankDAO" target="_blank">
                 <SvgIcon color="primary" component={GitHub} />
-            </Link> */}
+            </Link>
 
             <Link href="https://twitter.com/SnowbankDAO" target="_blank">
                 <SvgIcon color="primary" component={Twitter} />
