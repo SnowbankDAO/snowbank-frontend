@@ -108,6 +108,11 @@ function Stake() {
                             <div className="snowglobe-card-header">
                                 <p className="snowglobe-card-header-title">Snowglobe (❄️,❄️)</p>
                                 <p className="snowglobe-card-header-subtitle">Estimate your returns</p>
+                                <p className="snowglobe-card-header-disclaimer">
+                                    Any financial projections or returns shown on the calculator are estimated predictions of returns only, are hypothetical, are not based on
+                                    actual investment results and are not guarantees of future results. Estimated projections do not represent or guarantee the actual results of
+                                    any transaction, and no representation is made that any transaction will, or is likely to, achieve results or profits similar to those shown.
+                                </p>
                             </div>
                         </Grid>
 
