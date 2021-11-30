@@ -151,7 +151,7 @@ function Stake() {
                                 <div>
                                     <div className="snowglobe-card-action-area">
                                         <Grid className="snowglobe-card-grid" container spacing={1}>
-                                            <Grid item xs={5}>
+                                            <Grid item sm={5} className="snowglobe-entry">
                                                 <div className="snowglobe-card-action-row">
                                                     <p className="snowglobe-card-action-label">sSB AMOUNT</p>
                                                     <OutlinedInput
@@ -225,8 +225,8 @@ function Stake() {
                                                     />
                                                 </div>
                                             </Grid>
-                                            <Grid item xs={2}>
-                                                <Box height={300} display="flex" flexDirection="column" alignItems="center">
+                                            <Grid item className="slider-container">
+                                                <Box className="slider-inner">
                                                     <Box className="snowglobe-days">
                                                         <p className="data-row-value">
                                                             {duration}
@@ -239,6 +239,7 @@ function Stake() {
                                                             '& input[type="range"]': {
                                                                 WebkitAppearance: "slider-vertical",
                                                             },
+                                                            display: { xs: "none", sm: "block" },
                                                         }}
                                                         step={1}
                                                         marks
@@ -251,10 +252,29 @@ function Stake() {
                                                         aria-label="Temperature"
                                                         onKeyDown={preventHorizontalKeyboardNavigation}
                                                     />
+                                                    <Slider
+                                                        sx={{
+                                                            '& input[type="range"]': {
+                                                                WebkitAppearance: "slider-horizontal",
+                                                            },
+                                                            display: { xs: "block", sm: "none" },
+                                                            width: 1,
+                                                        }}
+                                                        step={1}
+                                                        marks
+                                                        min={1}
+                                                        max={365}
+                                                        orientation="horizontal"
+                                                        value={duration}
+                                                        //@ts-ignore
+                                                        onChange={handleSliderChange}
+                                                        aria-label="Temperature"
+                                                        onKeyDown={preventHorizontalKeyboardNavigation}
+                                                    />
                                                 </Box>
                                             </Grid>
 
-                                            <Grid item xs={5} className="snowglobe-data">
+                                            <Grid item sm={5} className="snowglobe-data">
                                                 <div className="data-row">
                                                     <p className="data-row-name">Your initial investment</p>
                                                     <p className="data-row-value">{fCurrency(investment)}</p>
