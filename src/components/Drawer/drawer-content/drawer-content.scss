@@ -5,6 +5,7 @@
   flex-direction: column;
   background: rgba(0, 1, 40, 0.5);
   border-right: 1px solid #30363a;
+  overflow-y: auto;
 
   .branding-header {
     display: flex;
@@ -164,8 +165,8 @@
 
 .MuiDrawer-root{
   .MuiPaper-root{
-
     z-index: 7;
+    overflow-y: hidden;
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       background: rgba(36, 39, 41, 0.1);
