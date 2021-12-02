@@ -170,7 +170,7 @@ function NavContent() {
                         <div className="dapp-menu-item">
                             <img alt="" src={ProIcon} />
                             <p>SB Pro</p>
-                            <span>Launch 12/03</span>
+                            <span>Coming soon</span>
                         </div>
                     </Link>
                 </div>
