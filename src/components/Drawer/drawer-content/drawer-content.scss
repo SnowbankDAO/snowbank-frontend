@@ -1,10 +1,11 @@
 .dapp-sidebar {
-  height: 100vh;
+  min-height: 100%;
   min-width: 280px;
   display: flex;
   flex-direction: column;
   background: rgba(0, 1, 40, 0.5);
   border-right: 1px solid #30363a;
+  overflow-y: auto;
 
   .branding-header {
     display: flex;
@@ -18,7 +19,7 @@
 
     .wallet-link {
       margin: 10px;
-  
+
       p{
         color: #FFFFFF;
         font-family: Mono;
@@ -56,7 +57,7 @@
           display: flex;
           flex-direction: row;
           align-items: center;
-        
+
           p{
             font-weight: 500;
             font-size: 16px;
@@ -77,14 +78,6 @@
         }
       }
 
-      .button-dapp-menu.active {
-        .dapp-menu-item{
-          p{
-            text-decoration: none;
-          }
-        }
-      }
-
       .bond-discounts {
         text-align: left;
         padding-left: 52px;
@@ -96,13 +89,13 @@
           font-size: 12px;
           letter-spacing: 1px;
         }
-      
+
         a{
           margin-left: 0;
           margin-top: 20px;
           margin-bottom: 20px;
         }
-      
+
         p {
           font-family: Montserrat;
           font-size: 14px;
@@ -110,7 +103,7 @@
           color: #b5b9bb;
           font-feature-settings: "ss09", "ss11";
         }
-        
+
         .bond {
           display: block;
           padding: unset;
@@ -127,7 +120,7 @@
 
   .dapp-menu-doc-link{
     margin-top: auto;
-    
+
     a {
       display: flex;
       width: 100%;
@@ -172,14 +165,14 @@
 
 .MuiDrawer-root{
   .MuiPaper-root{
-    
     z-index: 7;
+    overflow-y: hidden;
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       background: rgba(36, 39, 41, 0.1);
       backdrop-filter: blur(40px);
     }
-  
+
     /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
     @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
       background: #181B1C;
