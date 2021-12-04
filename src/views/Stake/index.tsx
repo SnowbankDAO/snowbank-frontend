@@ -96,11 +96,11 @@ function Stake() {
         setQuantity("");
     };
 
-    const trimmedMemoBalance = trim(Number(ssbBalance), 6);
+    const trimmedSSBBalance = trim(Number(ssbBalance), 6);
     const trimmedWrappedStakedSBBalance = trim(Number(wssbBalance), 6);
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
     const stakingRebasePercentage = trim(stakingRebase * 100, 4);
-    const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedMemoBalance), 6);
+    const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedSSBBalance), 6);
     const valueOfSB = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -112,15 +112,15 @@ function Stake() {
         currency: "USD",
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
-    }).format(Number(trimmedMemoBalance) * app.marketPrice);
+    }).format(Number(trimmedSSBBalance) * app.marketPrice);
     const valueOfWrappedStakedBalance = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
-    }).format(Number(trimmedWrappedStakedSBBalance) * app.marketPrice);
+    }).format(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex) * app.marketPrice);
 
-    const sumOfAllBalance = Number(sbBalance) + Number(trimmedMemoBalance) + Number(trimmedWrappedStakedSBBalance);
+    const sumOfAllBalance = Number(sbBalance) + Number(trimmedSSBBalance) + Number(trimmedWrappedStakedSBBalance) * Number(currentIndex);
     const valueOfAllBalance = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -296,7 +296,7 @@ function Stake() {
 
                                         <div className="data-row">
                                             <p className="data-row-name">Your Staked Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedMemoBalance} sSB</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedSSBBalance} sSB</>}</p>
                                         </div>
 
                                         <div className="data-row">
