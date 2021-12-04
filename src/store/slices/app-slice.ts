@@ -1,10 +1,9 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
 import { StakingContract, MemoTokenContract, TimeTokenContract } from "../../abi";
-import { setAll } from "../../helpers";
+import { setAll, getMarketPrice, getTokenPrice } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
-import { getMarketPrice, getTokenPrice } from "../../helpers";
 import { RootState } from "../store";
 import allBonds from "../../helpers/bond";
 

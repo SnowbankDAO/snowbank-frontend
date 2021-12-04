@@ -12,10 +12,12 @@ import { IReduxState } from "../../store/slices/state.interface";
 import { messages } from "../../constants/messages";
 import classnames from "classnames";
 import { warning } from "../../store/slices/messages-slice";
+import { IAppSlice } from "../../store/slices/app-slice";
 
 function Stake() {
     const dispatch = useDispatch();
     const { provider, address, connect, chainID, checkWrongNetwork } = useWeb3Context();
+    const app = useSelector<IReduxState, IAppSlice>(state => state.app);
 
     const [view, setView] = useState(0);
     const [quantity, setQuantity] = useState<string>("");
@@ -32,6 +34,9 @@ function Stake() {
     });
     const ssbBalance = useSelector<IReduxState, string>(state => {
         return state.account.balances && state.account.balances.ssb;
+    });
+    const wssbBalance = useSelector<IReduxState, string>(state => {
+        return state.account.balances && state.account.balances.wssb;
     });
     const stakeAllowance = useSelector<IReduxState, number>(state => {
         return state.account.staking && state.account.staking.sb;
@@ -91,10 +96,37 @@ function Stake() {
         setQuantity("");
     };
 
-    const trimmedMemoBalance = trim(Number(ssbBalance), 6);
+    const trimmedSSBBalance = trim(Number(ssbBalance), 6);
+    const trimmedWrappedStakedSBBalance = trim(Number(wssbBalance), 6);
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
     const stakingRebasePercentage = trim(stakingRebase * 100, 4);
-    const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedMemoBalance), 6);
+    const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedSSBBalance), 6);
+    const valueOfSB = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+    }).format(Number(sbBalance) * app.marketPrice);
+    const valueOfStakedBalance = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+    }).format(Number(trimmedSSBBalance) * app.marketPrice);
+    const valueOfWrappedStakedBalance = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+    }).format(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex) * app.marketPrice);
+
+    const sumOfAllBalance = Number(sbBalance) + Number(trimmedSSBBalance) + Number(trimmedWrappedStakedSBBalance) * Number(currentIndex);
+    const valueOfAllBalance = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+    }).format(sumOfAllBalance * app.marketPrice);
 
     return (
         <div className="stake-view">
@@ -111,7 +143,7 @@ function Stake() {
                         <Grid item>
                             <div className="stake-card-metrics">
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={4} md={4} lg={4}>
+                                    <Grid item xs={6} sm={3} md={3} lg={3}>
                                         <div className="stake-card-apy">
                                             <p className="stake-card-metrics-title">APY</p>
                                             <p className="stake-card-metrics-value">
@@ -120,7 +152,7 @@ function Stake() {
                                         </div>
                                     </Grid>
 
-                                    <Grid item xs={6} sm={4} md={4} lg={4}>
+                                    <Grid item xs={6} sm={3} md={3} lg={3}>
                                         <div className="stake-card-tvl">
                                             <p className="stake-card-metrics-title">TVL</p>
                                             <p className="stake-card-metrics-value">
@@ -138,10 +170,17 @@ function Stake() {
                                         </div>
                                     </Grid>
 
-                                    <Grid item xs={6} sm={4} md={4} lg={4}>
+                                    <Grid item xs={6} sm={3} md={3} lg={3}>
                                         <div className="stake-card-index">
                                             <p className="stake-card-metrics-title">Current Index</p>
                                             <p className="stake-card-metrics-value">{currentIndex ? <>{trim(Number(currentIndex), 2)} SB</> : <Skeleton width="150px" />}</p>
+                                        </div>
+                                    </Grid>
+
+                                    <Grid item xs={6} sm={3} md={3} lg={3}>
+                                        <div className="stake-card-index">
+                                            <p className="stake-card-metrics-title">SB Price</p>
+                                            <p className="stake-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trim(app.marketPrice, 2)}`}</p>
                                         </div>
                                     </Grid>
                                 </Grid>
@@ -257,7 +296,12 @@ function Stake() {
 
                                         <div className="data-row">
                                             <p className="data-row-name">Your Staked Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedMemoBalance} sSB</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedSSBBalance} sSB</>}</p>
+                                        </div>
+
+                                        <div className="data-row">
+                                            <p className="data-row-name">Your Wrapped Staked Balance</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedWrappedStakedSBBalance} wsSB</>}</p>
                                         </div>
 
                                         <div className="data-row">
@@ -279,6 +323,43 @@ function Stake() {
                             )}
                         </div>
                     </Grid>
+                </div>
+            </Zoom>
+            <Zoom in={true}>
+                <div>
+                    {address && (
+                        <div className="stake-card">
+                            <Grid className="stake-card-grid" container direction="column">
+                                <Grid item>
+                                    <div className="stake-card-header data-row">
+                                        <p className="stake-card-header-title">Your Balance</p>
+                                        <p className="stake-card-header-title">{isAppLoading ? <Skeleton width="80px" /> : <>{valueOfAllBalance}</>}</p>
+                                    </div>
+                                </Grid>
+
+                                <div className="stake-card-area">
+                                    <div>
+                                        <div className="">
+                                            <div className="data-row">
+                                                <p className="data-row-name">Value of Your SB</p>
+                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfSB}</>}</p>
+                                            </div>
+
+                                            <div className="data-row">
+                                                <p className="data-row-name">Value of Your Staked SB</p>
+                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfStakedBalance}</>}</p>
+                                            </div>
+
+                                            <div className="data-row">
+                                                <p className="data-row-name">Value of Your Wrapped Staked SB</p>
+                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfWrappedStakedBalance}</>}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Grid>
+                        </div>
+                    )}
                 </div>
             </Zoom>
         </div>
