@@ -86,7 +86,6 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     if (addresses.WSSB_ADDRESS) {
         const wssbContract = new ethers.Contract(addresses.WSSB_ADDRESS, MemoTokenContract, provider);
         wssbBalance = await wssbContract.balanceOf(address);
-        // unstakeAllowance = await wssbContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
     return {
