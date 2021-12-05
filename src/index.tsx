@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { Web3ContextProvider } from "./hooks";
 import { SnackbarProvider } from "notistack";
 import SnackMessage from "./components/Messages/snackbar";
+import "./i18n";
 
 ReactDOM.render(
     <SnackbarProvider
