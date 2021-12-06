@@ -1,7 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "hello": "hello world!"
-=======
     "hello": "hello world!",
     "PageNotFound": "Page not found",
     "day_one": "day",
@@ -17,5 +14,4 @@
     "ROI": "ROI",
     "SBPrice": "SB Price",
     "Price": "Price"
->>>>>>> Stashed changes
 }
