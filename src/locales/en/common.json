@@ -41,7 +41,7 @@
     "BuyOnTraderJoe": "Buy on Trader Joe",
     "CopyToClipboard": "Copy to clipboard",
     "ErrorMessage": "Error message",
-    "TimeToNextRebase": "{time} to Next rebase",
+    "TimeToNextRebase": "{{time}} to Next rebase",
     "Rebasing": "Rebasing",
     "AddTokenToWallet": "ADD TOKEN TO WALLET",
     "messages": {
