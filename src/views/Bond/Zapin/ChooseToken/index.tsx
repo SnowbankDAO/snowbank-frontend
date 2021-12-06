@@ -12,6 +12,8 @@ import { IAllBondData } from "../../../../hooks/bonds";
 import { mim, wavax } from "../../../../helpers/bond";
 import { mim as mimToken, wavax as wavaxToken } from "../../../../helpers/tokens";
 
+import { useTranslation } from "react-i18next";
+
 interface IChooseTokenProps {
     open: boolean;
     handleClose: () => void;
@@ -20,6 +22,8 @@ interface IChooseTokenProps {
 }
 
 function ChooseToken({ open, handleClose, handleSelect, bond }: IChooseTokenProps) {
+    const { t } = useTranslation();
+
     const { tokens, loading } = useTokens();
 
     const [quantity, setQuantity] = useState("");
@@ -60,7 +64,7 @@ function ChooseToken({ open, handleClose, handleSelect, bond }: IChooseTokenProp
                 </div>
                 <Box>
                     <div className="choose-token-poper-header">
-                        <p className="choose-token-poper-header-title">Choose token</p>
+                        <p className="choose-token-poper-header-title">{t("bond:ChooseToken")}</p>
                         <OutlinedInput
                             placeholder="Search name or paste address"
                             className="choose-token-poper-header-input"

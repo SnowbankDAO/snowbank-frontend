@@ -20,6 +20,8 @@ import SuccessIcon from "@material-ui/icons/CheckCircle";
 import { Color } from "@material-ui/lab/Alert";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+import { useTranslation } from "react-i18next";
+
 const useStyles = makeStyles(theme => ({
     root: {
         [theme.breakpoints.up("sm")]: {
@@ -94,6 +96,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SnackMessage = forwardRef<HTMLDivElement, { id: string | number; message: Message }>((props, ref) => {
+    const { t } = useTranslation();
+
     const classes = useStyles();
     const { closeSnackbar } = useSnackbar();
     const [expanded, setExpanded] = useState(false);
@@ -146,11 +150,11 @@ const SnackMessage = forwardRef<HTMLDivElement, { id: string | number; message: 
                         <CopyToClipboard text={JSON.stringify(props.message.error)} onCopy={() => setIsCopy(true)}>
                             <Button size="small" className={classes.button}>
                                 <CheckCircleIcon className={classnames(classes.checkIcon, { [classes.checkIconCopy]: isCopy })} />
-                                Copy to clipboard
+                                {t("CopyToClipboard")}
                             </Button>
                         </CopyToClipboard>
                         <div className={classes.errorWrap}>
-                            <Typography>Error message: </Typography>
+                            <Typography>{t("ErrorMessage")}: </Typography>
                             <Typography className={classes.errorText}>{JSON.stringify(props.message.error, null, 2)}</Typography>
                         </div>
                     </Paper>

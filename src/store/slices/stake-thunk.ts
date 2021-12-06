@@ -12,6 +12,8 @@ import { getGasPrice } from "../../helpers/get-gas-price";
 import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
 import { sleep } from "../../helpers";
 
+import i18n from "../../i18n";
+
 interface IChangeApproval {
     token: string;
     provider: StaticJsonRpcProvider | JsonRpcProvider;
@@ -42,7 +44,7 @@ export const changeApproval = createAsyncThunk("stake/changeApproval", async ({ 
             approveTx = await ssbContract.approve(addresses.STAKING_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
         }
 
-        const text = "Approve " + (token === "sb" ? "Staking" : "Unstaking");
+        const text = token === "sb" ? i18n.t("stake:ApproveStaking") : i18n.t("stake:ApproveUnstaking");
         const pendingTxnType = token === "sb" ? "approve_staking" : "approve_unstaking";
 
         dispatch(fetchPendingTxns({ txnHash: approveTx.hash, text, type: pendingTxnType }));
@@ -99,7 +101,7 @@ export const changeStake = createAsyncThunk("stake/changeStake", async ({ action
         } else {
             stakeTx = await staking.unstake(ethers.utils.parseUnits(value, "gwei"), true, { gasPrice });
         }
-        const pendingTxnType = action === "stake" ? "staking" : "unstaking";
+        const pendingTxnType = action === "stake" ? i18n.t("stake:Staking") : i18n.t("stake:Unstaking");
         dispatch(fetchPendingTxns({ txnHash: stakeTx.hash, text: getStakingTypeText(action), type: pendingTxnType }));
         await stakeTx.wait();
         dispatch(success({ text: messages.tx_successfully_send }));

@@ -6,11 +6,15 @@ import "./choosebond.scss";
 import { Skeleton } from "@material-ui/lab";
 import { IAllBondData } from "../../hooks/bonds";
 
+import { useTranslation } from "react-i18next";
+
 interface IBondProps {
     bond: IAllBondData;
 }
 
 export function BondDataCard({ bond }: IBondProps) {
+    const { t } = useTranslation();
+
     const isBondLoading = !bond.bondPrice ?? true;
 
     return (
@@ -23,7 +27,7 @@ export function BondDataCard({ bond }: IBondProps) {
                         {bond.isLP && (
                             <div>
                                 <Link href={bond.lpUrl} target="_blank">
-                                    <p className="bond-name-title">View Contract</p>
+                                    <p className="bond-name-title">{t("bond:ViewContract")}</p>
                                 </Link>
                             </div>
                         )}
@@ -31,7 +35,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
 
                 <div className="data-row">
-                    <p className="bond-name-title">Price</p>
+                    <p className="bond-name-title">{t("Price")}</p>
                     <p className="bond-price bond-name-title">
                         <>
                             {priceUnits(bond)} {isBondLoading ? <Skeleton width="50px" /> : trim(bond.bondPrice, 2)}
@@ -40,12 +44,12 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
 
                 <div className="data-row">
-                    <p className="bond-name-title">ROI</p>
+                    <p className="bond-name-title">{t("ROI")}</p>
                     <p className="bond-name-title">{isBondLoading ? <Skeleton width="50px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
                 </div>
 
                 <div className="data-row">
-                    <p className="bond-name-title">Purchased</p>
+                    <p className="bond-name-title">{t("bond:Purchased")}</p>
                     <p className="bond-name-title">
                         {isBondLoading ? (
                             <Skeleton width="80px" />
@@ -61,7 +65,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
-                        <p>Mint {bond.displayName}</p>
+                        <p>{t("bond:MintBond", { bond: bond.displayName })}</p>
                     </div>
                 </Link>
             </Paper>
@@ -70,6 +74,8 @@ export function BondDataCard({ bond }: IBondProps) {
 }
 
 export function BondTableData({ bond }: IBondProps) {
+    const { t } = useTranslation();
+
     const isBondLoading = !bond.bondPrice ?? true;
 
     return (
@@ -80,7 +86,7 @@ export function BondTableData({ bond }: IBondProps) {
                     <p className="bond-name-title">{bond.displayName}</p>
                     {bond.isLP && (
                         <Link color="primary" href={bond.lpUrl} target="_blank">
-                            <p className="bond-name-title">View Contract</p>
+                            <p className="bond-name-title">{t("bond:ViewContract")}</p>
                         </Link>
                     )}
                 </div>
@@ -112,7 +118,7 @@ export function BondTableData({ bond }: IBondProps) {
             <TableCell>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
-                        <p>Mint</p>
+                        <p>{t("bond:Mint")}</p>
                     </div>
                 </Link>
             </TableCell>

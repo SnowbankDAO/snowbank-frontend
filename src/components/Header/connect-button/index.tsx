@@ -8,7 +8,10 @@ import "./connect-menu.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { colors } from "@material-ui/core";
 
+import { useTranslation } from "react-i18next";
+
 function ConnectMenu() {
+    const { t } = useTranslation();
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork } = useWeb3Context();
     const dispatch = useDispatch();
     const [isConnected, setConnected] = useState(connected);
@@ -17,22 +20,22 @@ function ConnectMenu() {
         return state.pendingTransactions;
     });
 
-    let buttonText = "Connect Wallet";
+    let buttonText = t("ConnectWallet");
     let clickFunc: any = connect;
     let buttonStyle = {};
 
     if (isConnected) {
-        buttonText = "Disconnect";
+        buttonText = t("Disconnect");
         clickFunc = disconnect;
     }
 
     if (pendingTransactions && pendingTransactions.length > 0) {
-        buttonText = `${pendingTransactions.length} Pending `;
+        buttonText = t("CountPending", { count: pendingTransactions.length });
         clickFunc = () => {};
     }
 
     if (isConnected && providerChainID !== DEFAULD_NETWORK) {
-        buttonText = "Wrong network";
+        buttonText = t("WrongNetwork");
         buttonStyle = { backgroundColor: "rgb(255, 67, 67)", color: "#ffffff" };
         clickFunc = () => {
             checkWrongNetwork();
