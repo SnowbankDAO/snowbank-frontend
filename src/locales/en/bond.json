@@ -2,6 +2,8 @@
     "MintTitle": "Mint (1,1)",
     "ChooseToken": "Choose token",
     "ZapinAndMint": "Zapin & Mint",
+    "ZapinApproveToken": "Approve {{token}}",
+    "ZapinToken": "Zapin {{token}}",
     "ZapinHelpText": {
         "FirstRow": "Note: The \"Approve\" transaction is only needed when bonding for the first time",
         "SecondRow": "for each token; subsequent bonding only requires you to perform the",
@@ -33,5 +35,9 @@
     "ClaimableRewards": "Claimable Rewards",
     "TimeFullyVested": "Time until fully vested",
     "ViewContract": "View Contract",
-    "Purchased": "Purchased"
+    "Purchased": "Purchased",
+    "FullyVested": "Fully Vested",
+    "ApprovingBond": "Approving {{bond}}",
+    "BondingBond": "Bonding {{bond}}",
+    "RedeemingBond": "Redeeming {{bond}}"
 }
