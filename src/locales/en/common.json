@@ -1,3 +1,21 @@
 {
+<<<<<<< Updated upstream
     "hello": "hello world!"
+=======
+    "hello": "hello world!",
+    "PageNotFound": "Page not found",
+    "day_one": "day",
+    "day_other": "days",
+    "hour_one": "hour",
+    "hour_other": "hours",
+    "min_one": "min",
+    "min_other": "mins",
+    "Amount": "Amount",
+    "Max": "Max",
+    "Approve": "Approve",
+    "YourBalance": "Your Balance",
+    "ROI": "ROI",
+    "SBPrice": "SB Price",
+    "Price": "Price"
+>>>>>>> Stashed changes
 }
