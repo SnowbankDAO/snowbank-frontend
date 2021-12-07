@@ -164,6 +164,15 @@
 
   .bond-soldout {
     opacity: 0.6;
+
+    .bond-table-btn {
+      background: #919fa6;
+      border: 1px solid #30363a;
+
+      p {
+        color: #30363a;
+      }
+    }
   }
 
   .MuiTable-root {
