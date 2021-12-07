@@ -73,6 +73,10 @@
     }
   }
 
+  .MuiTableRow-root td:first-child {
+    height: 100%;
+  }
+
   .choose-bond-view-card-container{
     margin-top: 16px;
 
@@ -158,8 +162,24 @@
     }
   }
 
+  .bond-soldout {
+    opacity: 0.6;
+
+    .bond-table-btn {
+      background: #919fa6;
+      border: 1px solid #30363a;
+
+      p {
+        color: #30363a;
+      }
+    }
+  }
+
   .MuiTable-root {
     margin: 10px 0px;
+    height: 72px;
+    border-spacing: 0 0px;
+    border-collapse: separate;
   }
 
   .MuiTableRow-head {
