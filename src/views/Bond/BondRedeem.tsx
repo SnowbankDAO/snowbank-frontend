@@ -11,11 +11,15 @@ import { IUserBondDetails } from "../../store/slices/account-slice";
 import { messages } from "../../constants/messages";
 import { warning } from "../../store/slices/messages-slice";
 
+import { useTranslation } from "react-i18next";
+
 interface IBondRedeem {
     bond: IAllBondData;
 }
 
 function BondRedeem({ bond }: IBondRedeem) {
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
     const { provider, address, chainID, checkWrongNetwork } = useWeb3Context();
 
@@ -69,7 +73,7 @@ function BondRedeem({ bond }: IBondRedeem) {
                         onRedeem(false);
                     }}
                 >
-                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name, "Claim")}</p>
+                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name, t("bond:Claim"))}</p>
                 </div>
                 <div
                     className="transaction-button bond-approve-btn"
@@ -78,32 +82,32 @@ function BondRedeem({ bond }: IBondRedeem) {
                         onRedeem(true);
                     }}
                 >
-                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name + "_autostake", "Claim and Autostake")}</p>
+                    <p>{txnButtonText(pendingTransactions, "redeem_bond_" + bond.name + "_autostake", t("bond:ClaimAutostake"))}</p>
                 </div>
             </Box>
 
             <Slide direction="right" in={true} mountOnEnter unmountOnExit {...{ timeout: 533 }}>
                 <Box className="bond-data">
                     <div className="data-row">
-                        <p className="bond-balance-title">Pending Rewards</p>
+                        <p className="bond-balance-title">{t("bond:PendingRewards")}</p>
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.interestDue, 4)} SB`}</p>
                     </div>
                     <div className="data-row">
-                        <p className="bond-balance-title">Claimable Rewards</p>
+                        <p className="bond-balance-title">{t("bond:ClaimableRewards")}</p>
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.pendingPayout, 4)} SB`}</p>
                     </div>
                     <div className="data-row">
-                        <p className="bond-balance-title">Time until fully vested</p>
+                        <p className="bond-balance-title">{t("bond:TimeFullyVested")}</p>
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingTime()}</p>
                     </div>
 
                     <div className="data-row">
-                        <p className="bond-balance-title">ROI</p>
+                        <p className="bond-balance-title">{t("ROI")}</p>
                         <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
                     </div>
 
                     <div className="data-row">
-                        <p className="bond-balance-title">Vesting Term</p>
+                        <p className="bond-balance-title">{t("bond:VestingTerm")}</p>
                         <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingPeriod()}</p>
                     </div>
                 </Box>

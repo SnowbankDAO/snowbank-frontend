@@ -1,3 +1,5 @@
+import i18n from "../i18n";
+
 export const prettifySeconds = (seconds?: number, resolution?: string) => {
     if (seconds !== 0 && !seconds) {
         return "";
@@ -8,12 +10,12 @@ export const prettifySeconds = (seconds?: number, resolution?: string) => {
     const m = Math.floor((seconds % 3600) / 60);
 
     if (resolution === "day") {
-        return d + (d == 1 ? " day" : " days");
+        return d + ` ${i18n.t("day", { count: d })}`;
     }
 
-    const dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
-    const hDisplay = h > 0 ? h + (h == 1 ? " Hour, " : " Hours, ") : "";
-    const mDisplay = m > 0 ? m + (m == 1 ? " Min" : " Mins") : "";
+    const dDisplay = d > 0 ? d + ` ${i18n.t("day", { count: d })}, ` : "";
+    const hDisplay = h > 0 ? h + ` ${i18n.t("hour", { count: h })}, ` : "";
+    const mDisplay = m > 0 ? m + ` ${i18n.t("min", { count: m })}` : "";
 
     return dDisplay + hDisplay + mDisplay;
 };

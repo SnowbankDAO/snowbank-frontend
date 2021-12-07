@@ -15,6 +15,8 @@ import { zapinData, zapinLpData } from "../../helpers/zapin-fetch-data";
 import { trim } from "../../helpers/trim";
 import { sleep } from "../../helpers";
 
+import i18n from "../../i18n";
+
 interface IChangeApproval {
     token: IToken;
     provider: StaticJsonRpcProvider | JsonRpcProvider;
@@ -39,7 +41,7 @@ export const changeApproval = createAsyncThunk("zapin/changeApproval", async ({ 
 
         approveTx = await tokenContract.approve(addresses.ZAPIN_ADDRESS, ethers.constants.MaxUint256, { gasPrice });
 
-        const text = "Approve " + token.name;
+        const text = i18n.t("bond:ZapinApproveToken", { token: token.name });
         const pendingTxnType = "approve_" + token.address;
 
         dispatch(fetchPendingTxns({ txnHash: approveTx.hash, text, type: pendingTxnType }));
@@ -216,7 +218,7 @@ export const zapinMint = createAsyncThunk(
             dispatch(
                 fetchPendingTxns({
                     txnHash: zapinTx.hash,
-                    text: "Zapin " + token.name,
+                    text: i18n.t("bond:ZapinToken", { token: token.name }),
                     type: "zapin_" + token.name + "_" + bond.name,
                 }),
             );

@@ -6,7 +6,11 @@ import { Skeleton } from "@material-ui/lab";
 import { useMemo } from "react";
 import { IReduxState } from "../../store/slices/state.interface";
 
+import { useTranslation } from "react-i18next";
+
 function RebaseTimer() {
+    const { t } = useTranslation();
+
     const currentBlockTime = useSelector<IReduxState, number>(state => {
         return state.app.currentBlockTime;
     });
@@ -24,19 +28,7 @@ function RebaseTimer() {
 
     return (
         <Box className="rebase-timer">
-            <p>
-                {currentBlockTime ? (
-                    timeUntilRebase ? (
-                        <>
-                            <span>{timeUntilRebase}</span> to Next Rebase
-                        </>
-                    ) : (
-                        <span>Rebasing</span>
-                    )
-                ) : (
-                    <Skeleton width="200px" />
-                )}
-            </p>
+            <p>{currentBlockTime ? timeUntilRebase ? <>{t("TimeToNextRebase", { time: timeUntilRebase })}</> : <span>{t("Rebasing")}</span> : <Skeleton width="200px" />}</p>
         </Box>
     );
 }

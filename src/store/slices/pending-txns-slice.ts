@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
+import i18n from "../../i18n";
 export interface IPendingTxn {
     readonly txnHash: string;
     readonly text: string;
@@ -25,7 +25,7 @@ const pendingTxnsSlice = createSlice({
 });
 
 export const getStakingTypeText = (action: string) => {
-    return action.toLowerCase() === "stake" ? "Staking SB" : "Unstaking sSB";
+    return action.toLowerCase() === "stake" ? i18n.t("stake:StakingSB") : i18n.t("stake:UnstakingStakedSB");
 };
 
 export const isPendingTxn = (pendingTransactions: IPendingTxn[], type: string) => {
@@ -33,7 +33,7 @@ export const isPendingTxn = (pendingTransactions: IPendingTxn[], type: string) =
 };
 
 export const txnButtonText = (pendingTransactions: IPendingTxn[], type: string, defaultText: string) => {
-    return isPendingTxn(pendingTransactions, type) ? "Pending..." : defaultText;
+    return isPendingTxn(pendingTransactions, type) ? i18n.t("PendingEllipsis") : defaultText;
 };
 
 export const { fetchPendingTxns, clearPendingTxn } = pendingTxnsSlice.actions;
