@@ -77,9 +77,9 @@ export function BondTableData({ bond }: IBondProps) {
     const { t } = useTranslation();
 
     const isBondLoading = !bond.bondPrice ?? true;
-
+    const bondSoldOut = bond.bondDiscount * 100 < -30;
     return (
-        <TableRow>
+        <TableRow className={bondSoldOut ? "bond-soldout" : ""}>
             <TableCell align="left">
                 <BondLogo bond={bond} />
                 <div className="bond-name">
