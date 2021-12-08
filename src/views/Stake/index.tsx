@@ -299,10 +299,12 @@ function Stake() {
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedSSBBalance} sSB</>}</p>
                                         </div>
 
-                                        <div className="data-row">
-                                            <p className="data-row-name">Your Wrapped Staked Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedWrappedStakedSBBalance} wsSB</>}</p>
-                                        </div>
+                                        {Number(trimmedWrappedStakedSBBalance) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name">Your Wrapped Staked Balance</p>
+                                                <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedWrappedStakedSBBalance} wsSB</>}</p>
+                                            </div>
+                                        )}
 
                                         {Number(trimmedWrappedStakedSBBalance) > 0 && (
                                             <div className="data-row">
@@ -359,10 +361,12 @@ function Stake() {
                                                 <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfStakedBalance}</>}</p>
                                             </div>
 
-                                            <div className="data-row">
-                                                <p className="data-row-name">Value of Your Wrapped Staked SB</p>
-                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfWrappedStakedBalance}</>}</p>
-                                            </div>
+                                            {Number(trimmedWrappedStakedSBBalance) > 0 && (
+                                                <div className="data-row">
+                                                    <p className="data-row-name">Value of Your Wrapped Staked SB</p>
+                                                    <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfWrappedStakedBalance}</>}</p>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
