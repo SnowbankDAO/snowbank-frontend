@@ -6,6 +6,8 @@ import "./snowbank-menu.scss";
 import { IReduxState } from "../../../store/slices/state.interface";
 import { getTokenUrl } from "../../../helpers";
 
+import { useTranslation } from "react-i18next";
+
 const addTokenToWallet = (tokenSymbol: string, tokenAddress: string) => async () => {
     const tokenImage = getTokenUrl(tokenSymbol.toLowerCase());
 
@@ -30,6 +32,8 @@ const addTokenToWallet = (tokenSymbol: string, tokenAddress: string) => async ()
 };
 
 function SnowbankMenu() {
+    const { t } = useTranslation();
+
     const [anchorEl, setAnchorEl] = useState(null);
     const isEthereumAPIAvailable = window.ethereum;
 
@@ -51,7 +55,7 @@ function SnowbankMenu() {
     return (
         <div className="sb-menu-root" onMouseEnter={e => handleClick(e)} onMouseLeave={e => handleClick(e)}>
             <div className="sb-menu-btn">
-                <p>Buy $SB</p>
+                <p>{t("BuySB")}</p>
             </div>
 
             <Popper className="sb-menu-popper" open={open} anchorEl={anchorEl} transition>
@@ -63,13 +67,13 @@ function SnowbankMenu() {
                                 href={`https://www.traderjoexyz.com/#/trade?inputCurrency=0x130966628846bfd36ff31a822705796e8cb8c18d&outputCurrency=${SB_ADDRESS}`}
                                 target="_blank"
                             >
-                                <p>Buy on Trader Joe</p>
+                                <p>{t("BuyOnTraderJoe")}</p>
                             </Link>
 
                             {isEthereumAPIAvailable && (
                                 <div className="add-tokens">
                                     <div className="divider" />
-                                    <p className="add-tokens-title">ADD TOKEN TO WALLET</p>
+                                    <p className="add-tokens-title">{t("AddTokenToWallet")}</p>
                                     <div className="divider" />
                                     <div className="tooltip-item" onClick={addTokenToWallet("SB", SB_ADDRESS)}>
                                         <p>↑ SB</p>

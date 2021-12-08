@@ -16,7 +16,11 @@ import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
 
+import { useTranslation } from "react-i18next";
+
 function NavContent() {
+    const { t } = useTranslation();
+
     const address = useAddress();
     const { bonds } = useBonds();
 
@@ -41,26 +45,26 @@ function NavContent() {
                     <Link component={NavLink} to="/dashboard" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={DashboardIcon} />
-                            <p>Dashboard</p>
+                            <p>{t("Dashboard")}</p>
                         </div>
                     </Link>
 
                     <Link component={NavLink} to="/stake" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={StakeIcon} />
-                            <p>Stake</p>
+                            <p>{t("Stake")}</p>
                         </div>
                     </Link>
 
                     <Link component={NavLink} id="bond-nav" to="/mints" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={BondIcon} />
-                            <p>Mint</p>
+                            <p>{t("Mint")}</p>
                         </div>
                     </Link>
 
                     <div className="bond-discounts">
-                        <p className="bond-discounts-title">Mint discounts</p>
+                        <p className="bond-discounts-title">{t("MintDiscounts")}</p>
                         {bonds.map((bond, i) => (
                             <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
@@ -82,7 +86,7 @@ function NavContent() {
                         <div className="button-dapp-menu">
                             <div className="dapp-menu-item">
                                 <img alt="" src={BuyIcon} />
-                                <p>Buy</p>
+                                <p>{t("Buy")}</p>
                             </div>
                         </div>
                     </Link>
@@ -91,7 +95,7 @@ function NavContent() {
                         <div className="button-dapp-menu">
                             <div className="dapp-menu-item">
                                 <img alt="" src={Snowglobe} />
-                                <p>Snowglobe</p>
+                                <p>{t("Snowglobe")}</p>
                             </div>
                         </div>
                     </Link>
@@ -99,16 +103,16 @@ function NavContent() {
                     {/* <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={BorrowIcon} />
-                            <p>Borrow</p>
-                            <span>Coming soon</span>
+                            <p>{t("Borrow")}</p>
+                            <span>{t("ComingSoon")}</span>
                         </div>
                     </Link> */}
 
                     <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={ProIcon} />
-                            <p>SB Pro</p>
-                            <span>Coming soon</span>
+                            <p>{t("SBPro")}</p>
+                            <span>{t("ComingSoon")}</span>
                         </div>
                     </Link>
                 </div>

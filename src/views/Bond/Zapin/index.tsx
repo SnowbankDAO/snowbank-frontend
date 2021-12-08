@@ -23,6 +23,8 @@ import { messages } from "../../../constants/messages";
 import { utils } from "ethers";
 import { calcBondDetails } from "../../../store/slices/bond-slice";
 
+import { useTranslation } from "react-i18next";
+
 interface IZapinProps {
     open: boolean;
     handleClose: () => void;
@@ -30,6 +32,8 @@ interface IZapinProps {
 }
 
 function Zapin({ open, handleClose, bond }: IZapinProps) {
+    const { t } = useTranslation();
+
     const { tokens } = useTokens();
     const { provider, address, chainID, checkWrongNetwork } = useWeb3Context();
     const dispatch = useDispatch();
@@ -194,7 +198,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                 <Box className="card-content">
                     <div className="zapin-header">
                         <div className="zapin-header-token-select-wrap">
-                            <p className="zapin-header-token-select-title">Zapin & Mint</p>
+                            <p className="zapin-header-token-select-title">{t("bond:ZapinAndMint")}</p>
                             <OutlinedInput
                                 type="number"
                                 placeholder="Amount"
@@ -229,7 +233,7 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                                         await onMint();
                                     }}
                                 >
-                                    <p>{txnButtonText(pendingTransactions, "zapin_" + token.name + "_" + bond.name, "Mint")}</p>
+                                    <p>{txnButtonText(pendingTransactions, "zapin_" + token.name + "_" + bond.name, t("bond:Mint"))}</p>
                                 </div>
                             ) : (
                                 <div
@@ -239,15 +243,15 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                                         await onSeekApproval();
                                     }}
                                 >
-                                    <p>{txnButtonText(pendingTransactions, "approve_" + token.address, "Approve")}</p>
+                                    <p>{txnButtonText(pendingTransactions, "approve_" + token.address, t("Approve"))}</p>
                                 </div>
                             )}
                         </div>
                         {!hasAllowance() && !token.isAvax && (
                             <div className="zapin-header-help-text">
-                                <p>Note: The "Approve" transaction is only needed when bonding for the first time</p>
-                                <p>for each token; subsequent bonding only requires you to perform the</p>
-                                <p>"zapin&mint" transaction.</p>
+                                <p>{t("bond:ZapinHelpText.FirstRow")}</p>
+                                <p>{t("bond:ZapinHelpText.SecondRow")}</p>
+                                <p>{t("bond:ZapinHelpText.ThirdRow")}</p>
                             </div>
                         )}
                     </div>
@@ -255,45 +259,45 @@ function Zapin({ open, handleClose, bond }: IZapinProps) {
                         <div className="zapin-body-header">
                             <BondLogo bond={bond} />
                             <div className="zapin-body-header-name">
-                                <p>TX settings</p>
+                                <p>{t("bond:TXSettings")}</p>
                             </div>
                         </div>
                         <div className="zapin-body-params">
                             <div className="data-row">
-                                <p className="data-row-name">Destination token </p>
+                                <p className="data-row-name">{t("bond:DestinationToken")}</p>
                                 <p className="data-row-value">{bond.displayName}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Slippage Tolerance</p>
+                                <p className="data-row-name">{t("bond:SlippageTolerance")}</p>
                                 <p className="data-row-value">{trim(slippage)}%</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Your Balance</p>
+                                <p className="data-row-name">{t("YourBalance")}</p>
                                 <p className="data-row-value">{`${trim(token.balance, 6)} ${token.name}`}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Minimum Received Amount</p>
+                                <p className="data-row-name">{t("bond:MinimumReceivedAmount")}</p>
                                 <p className="data-row-value">{isLoading ? <Skeleton width="100px" /> : `${minimumReceivedAmount} ${bond.displayUnits}`}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Approximately you will get</p>
+                                <p className="data-row-name">{t("bond:ApproximatelyYouWillGet")}</p>
                                 <p className="data-row-value">{isLoading ? <Skeleton width="100px" /> : `~ ${trim(bond.bondQuote, 4)} SB`}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Max You Can Buy</p>
+                                <p className="data-row-name">{t("bond:MaxYouCanBuy")}</p>
                                 <p className="data-row-value">{isLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4)} SB`}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">ROI</p>
+                                <p className="data-row-name">{t("ROI")}</p>
                                 <p className="data-row-value">{isLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
                             </div>
                             <div className="data-row">
-                                <p className="data-row-name">Minimum purchase</p>
+                                <p className="data-row-name">{t("bond:MinimumPurchase")}</p>
                                 <p className="data-row-value">0.01 SB</p>
                             </div>
                             {recipientAddress !== address && (
                                 <div className="data-row">
-                                    <p className="data-row-name">Recipient</p>
+                                    <p className="data-row-name">{t("bond:Recipient")}</p>
                                     <p className="data-row-value">{shorten(recipientAddress)}</p>
                                 </div>
                             )}
