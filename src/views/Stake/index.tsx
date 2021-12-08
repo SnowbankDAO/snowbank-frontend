@@ -304,6 +304,15 @@ function Stake() {
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedWrappedStakedSBBalance} wsSB</>}</p>
                                         </div>
 
+                                        {Number(trimmedWrappedStakedSBBalance) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name">Your Wrapped sSB is equivalent to</p>
+                                                <p className="data-row-value">
+                                                    {isAppLoading ? <Skeleton width="80px" /> : <>({trim(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex), 6)} sSB)</>}
+                                                </p>
+                                            </div>
+                                        )}
+
                                         <div className="data-row">
                                             <p className="data-row-name">Next Reward Amount</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} SB</>}</p>
