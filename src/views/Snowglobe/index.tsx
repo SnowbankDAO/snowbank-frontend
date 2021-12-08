@@ -13,7 +13,11 @@ import { IAppSlice } from "../../store/slices/app-slice";
 import SnowStorm from "react-snowstorm";
 import { Snowfall, Snowflake } from "react-snowflakes";
 
+import { useTranslation } from "react-i18next";
+
 function Stake() {
+    const { t } = useTranslation();
+
     const { address, connect } = useWeb3Context();
 
     const [ssbQuantity, setSsbQuantity] = useState<string>("1");
@@ -106,13 +110,9 @@ function Stake() {
                     <Grid className="snowglobe-card-grid" container direction="column" spacing={2}>
                         <Grid item>
                             <div className="snowglobe-card-header">
-                                <p className="snowglobe-card-header-title">Snowglobe (❄️,❄️)</p>
-                                <p className="snowglobe-card-header-subtitle">Estimate your returns</p>
-                                <p className="snowglobe-card-header-disclaimer">
-                                    Any financial projections or returns shown on the calculator are estimated predictions of returns only, are hypothetical, are not based on
-                                    actual investment results and are not guarantees of future results. Estimated projections do not represent or guarantee the actual results of
-                                    any transaction, and no representation is made that any transaction will, or is likely to, achieve results or profits similar to those shown.
-                                </p>
+                                <p className="snowglobe-card-header-title">{t("globe:SnowglobeTitle")}</p>
+                                <p className="snowglobe-card-header-subtitle">{t("globe:EstimateYourReturns")}</p>
+                                <p className="snowglobe-card-header-disclaimer">{t("globe:SnowglobeWarning")}</p>
                             </div>
                         </Grid>
 
@@ -121,21 +121,21 @@ function Stake() {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} sm={4} md={4} lg={4}>
                                         <div className="snowglobe-card-apy">
-                                            <p className="snowglobe-card-metrics-title">Current SB Price</p>
+                                            <p className="snowglobe-card-metrics-title">{t("globe:CurrentSBPrice")}</p>
                                             <p className="snowglobe-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trim(app.marketPrice, 2)}`}</p>
                                         </div>
                                     </Grid>
 
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
                                         <div className="snowglobe-card-tvl">
-                                            <p className="snowglobe-card-metrics-title">Current Reward Yield</p>
+                                            <p className="snowglobe-card-metrics-title">{t("globe:CurrentRewardYield")}</p>
                                             <p className="snowglobe-card-metrics-value">{isAppLoading ? <Skeleton width="80px" /> : <>{stakingRebasePercentage}%</>}</p>
                                         </div>
                                     </Grid>
 
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
                                         <div className="snowglobe-card-index">
-                                            <p className="snowglobe-card-metrics-title">Your sSB Balance</p>
+                                            <p className="snowglobe-card-metrics-title">{t("globe:YourStakedSBBalance")}</p>
                                             <p className="snowglobe-card-metrics-value">{isAppLoading ? <Skeleton width="150px" /> : <>{trimmedSsbBalance} sSB</>}</p>
                                         </div>
                                     </Grid>
@@ -147,9 +147,9 @@ function Stake() {
                             {!address && (
                                 <div className="snowglobe-card-wallet-notification">
                                     <div className="snowglobe-card-wallet-connect-btn" onClick={connect}>
-                                        <p>Connect Wallet</p>
+                                        <p>{t("ConnectWallet")}</p>
                                     </div>
-                                    <p className="snowglobe-card-wallet-desc-text">Connect your wallet to use the Snowglobe</p>
+                                    <p className="snowglobe-card-wallet-desc-text">{t("globe:ConnectYourWalletToUseSnowglobe")}</p>
                                 </div>
                             )}
                             {address && (
@@ -158,10 +158,10 @@ function Stake() {
                                         <Grid className="snowglobe-card-grid" container spacing={1}>
                                             <Grid item sm={5} className="snowglobe-entry">
                                                 <div className="snowglobe-card-action-row">
-                                                    <p className="snowglobe-card-action-label">sSB AMOUNT</p>
+                                                    <p className="snowglobe-card-action-label">{t("globe:StakedSBAmount")}</p>
                                                     <OutlinedInput
                                                         type="number"
-                                                        placeholder="Enter sSB Amount"
+                                                        placeholder={t("globe:EnterStakedSBAmount")}
                                                         className="snowglobe-card-action-input"
                                                         value={ssbQuantity}
                                                         onChange={e => setSsbQuantity(e.target.value)}
@@ -169,17 +169,17 @@ function Stake() {
                                                         endAdornment={
                                                             <InputAdornment position="end">
                                                                 <div onClick={setSsbToMax} className="snowglobe-card-action-input-btn">
-                                                                    <p>Max</p>
+                                                                    <p>{t("Max")}</p>
                                                                 </div>
                                                             </InputAdornment>
                                                         }
                                                     />
                                                 </div>
                                                 <div className="snowglobe-card-action-row">
-                                                    <p className="snowglobe-card-action-label">REWARD YIELD (%)</p>
+                                                    <p className="snowglobe-card-action-label">{t("globe:RewardYieldPercent")}</p>
                                                     <OutlinedInput
                                                         type="number"
-                                                        placeholder="Enter Reward Yield (%)"
+                                                        placeholder={t("globe:EnterRewardYieldPercent")}
                                                         className="snowglobe-card-action-input"
                                                         value={rewardYield}
                                                         onChange={e => setRewardYield(e.target.value)}
@@ -187,17 +187,17 @@ function Stake() {
                                                         endAdornment={
                                                             <InputAdornment position="end">
                                                                 <div onClick={setYeildCurrent} className="snowglobe-card-action-input-btn">
-                                                                    <p>CURRENT</p>
+                                                                    <p>{t("globe:Current")}</p>
                                                                 </div>
                                                             </InputAdornment>
                                                         }
                                                     />
                                                 </div>
                                                 <div className="snowglobe-card-action-row">
-                                                    <p className="snowglobe-card-action-label">SB PRICE AT PURCHASE ($)</p>
+                                                    <p className="snowglobe-card-action-label">{t("globe:SBPriceAtPurchase")}</p>
                                                     <OutlinedInput
                                                         type="number"
-                                                        placeholder="Enter buy price"
+                                                        placeholder={t("globe:EnterBuyPrice")}
                                                         className="snowglobe-card-action-input"
                                                         value={price}
                                                         onChange={e => setPrice(e.target.value)}
@@ -205,17 +205,17 @@ function Stake() {
                                                         endAdornment={
                                                             <InputAdornment position="end">
                                                                 <div onClick={setCurrentPrice} className="snowglobe-card-action-input-btn">
-                                                                    <p>CURRENT</p>
+                                                                    <p>{t("globe:Current")}</p>
                                                                 </div>
                                                             </InputAdornment>
                                                         }
                                                     />
                                                 </div>
                                                 <div className="snowglobe-card-action-row">
-                                                    <p className="snowglobe-card-action-label">FUTURE SB MARKET PRICE ($)</p>
+                                                    <p className="snowglobe-card-action-label">{t("globe:FutureSBMarketPrice")}</p>
                                                     <OutlinedInput
                                                         type="number"
-                                                        placeholder="Enter future price"
+                                                        placeholder={t("globe:EnterFuturePrice")}
                                                         className="snowglobe-card-action-input"
                                                         value={futurePrice}
                                                         onChange={e => setFuturePrice(e.target.value)}
@@ -223,7 +223,7 @@ function Stake() {
                                                         endAdornment={
                                                             <InputAdornment position="end">
                                                                 <div onClick={setCurrentPriceToFuture} className="snowglobe-card-action-input-btn">
-                                                                    <p>CURRENT</p>
+                                                                    <p>{t("globe:Current")}</p>
                                                                 </div>
                                                             </InputAdornment>
                                                         }
@@ -236,7 +236,7 @@ function Stake() {
                                                         <p className="data-row-value">
                                                             {duration}
                                                             <br />
-                                                            day{duration === 1 ? "" : "s"}
+                                                            {t("day", { count: duration })}
                                                         </p>
                                                     </Box>
                                                     <Slider
@@ -254,7 +254,7 @@ function Stake() {
                                                         value={duration}
                                                         //@ts-ignore
                                                         onChange={handleSliderChange}
-                                                        aria-label="Temperature"
+                                                        aria-label={t("globe:Duration")}
                                                         onKeyDown={preventHorizontalKeyboardNavigation}
                                                     />
                                                     <Slider
@@ -273,7 +273,7 @@ function Stake() {
                                                         value={duration}
                                                         //@ts-ignore
                                                         onChange={handleSliderChange}
-                                                        aria-label="Temperature"
+                                                        aria-label={t("globe:Duration")}
                                                         onKeyDown={preventHorizontalKeyboardNavigation}
                                                     />
                                                 </Box>
@@ -281,24 +281,25 @@ function Stake() {
 
                                             <Grid item sm={5} className="snowglobe-data">
                                                 <div className="data-row">
-                                                    <p className="data-row-name">Your initial investment</p>
+                                                    <p className="data-row-name">{t("globe:YourInitialInvestment")}</p>
                                                     <p className="data-row-value">{fCurrency(investment)}</p>
                                                 </div>
                                                 <div className="data-row">
-                                                    <p className="data-row-name">Current wealth</p>
+                                                    <p className="data-row-name">{t("globe:CurrentWealth")}</p>
                                                     <p className="data-row-value">{fCurrency(currentWealth)}</p>
                                                 </div>
                                                 <div className="data-row">
-                                                    <p className="data-row-name">SB rewards estimation</p>
+                                                    <p className="data-row-name">{t("globe:SBRewardsEstimation")}</p>
                                                     <p className="data-row-value">{fShortenNumber(gains)} SB</p>
                                                 </div>
                                                 <div className="data-row">
-                                                    <p className="data-row-name">Potential return</p>
+                                                    <p className="data-row-name">{t("globe:PotentialReturn")}</p>
                                                     <p className="data-row-value">{fCurrency(futureWealth)}</p>
                                                 </div>
                                                 <div className="data-row">
                                                     <p className="data-row-name">
-                                                        Potential number of lambos*<span>Lamborghini Huracán, no options</span>
+                                                        {t("globe:PotentialNumberLambo")}
+                                                        <span>{t("globe:LamboHelpText")}</span>
                                                     </p>
                                                     <p className="data-row-value">{nbLambo}</p>
                                                 </div>

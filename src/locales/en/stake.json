@@ -1,0 +1,21 @@
+{
+    "StakeTitle": "Stake (3,3)",
+    "ConnectYourWalletToStake": "Connect your wallet to stake SB tokens!",
+    "Stake": "Stake",
+    "Unstake": "Unstake",
+    "StakingSB": "Staking SB",
+    "UnstakingStakedSB": "Unstaking sSB",
+    "YourStakedBalance": "Your Staked Balance",
+    "YourWrappedStakedBalance": "Your Wrapped Staked Balance",
+    "NextRewardAmount": "Next Reward Amount",
+    "NextRewardYield": "Next Reward Yield",
+    "ROIFiveDayRate": "$t(ROI) ($t(FiveDayRate))",
+    "ValueOfYourSB": "Value of Your SB",
+    "ValueOfYourStakedSB": "Value of Your Staked SB",
+    "ValueOfYourWrappedStakedSB": "Value of Your Wrapped Staked SB",
+    "Staking": "staking",
+    "Unstaking": "unstaking",
+    "ApproveStaking": "Approve Staking",
+    "ApproveUnstaking": "Approve Unstaking",
+    "ApproveNote": "Note: The \"Approve\" transaction is only needed when staking/unstaking for the first time; subsequent staking/unstaking only requires you to perform the \"Stake\" or \"Unstake\" transaction."
+}

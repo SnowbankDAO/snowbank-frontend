@@ -16,6 +16,7 @@ import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
 import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
 import { sleep } from "../../helpers";
+import i18n from "../../i18n";
 
 interface IChangeApproval {
     bond: Bond;
@@ -41,7 +42,7 @@ export const changeApproval = createAsyncThunk("bonding/changeApproval", async (
         dispatch(
             fetchPendingTxns({
                 txnHash: approveTx.hash,
-                text: "Approving " + bond.displayName,
+                text: i18n.t("bond:ApprovingBond", { bond: bond.displayName }),
                 type: "approve_" + bond.name,
             }),
         );
@@ -219,7 +220,7 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
         dispatch(
             fetchPendingTxns({
                 txnHash: bondTx.hash,
-                text: "Bonding " + bond.displayName,
+                text: i18n.t("bond:BondingBond", { bond: bond.displayName }),
                 type: "bond_" + bond.name,
             }),
         );
@@ -265,7 +266,7 @@ export const redeemBond = createAsyncThunk("bonding/redeemBond", async ({ addres
         dispatch(
             fetchPendingTxns({
                 txnHash: redeemTx.hash,
-                text: "Redeeming " + bond.displayName,
+                text: i18n.t("bond:RedeemingBond", { bond: bond.displayName }),
                 type: pendingTxnType,
             }),
         );
