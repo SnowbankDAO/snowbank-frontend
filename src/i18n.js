@@ -1,32 +1,28 @@
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
-import commonEN from "./locales/en/common.json";
-import bondEN from "./locales/en/bond.json";
-import globeEN from "./locales/en/globe.json";
-import stakeEN from "./locales/en/stake.json";
-import commonIT from "./locales/it/common.json";
+import en from "./locales/en";
+import it from "./locales/it";
 
 const resources = {
-    en: {
-        common: commonEN,
-        bond: bondEN,
-        globe: globeEN,
-        stake: stakeEN,
-    },
+    en: en,
     it: {
-        common: commonIT,
+        lang: en.lang,
+        ...it,
     },
 };
 
-i18n.use(initReactI18next) // passes i18n down to react-i18next
+i18n.use(LanguageDetector)
+    .use(initReactI18next) // passes i18n down to react-i18next
     .init({
-        ns: ["common", "bond", "globe", "stake"],
+        ns: ["common", "bond", "globe", "stake", "lang"],
         fallbackLng: "en",
-        lng: "en",
         debug: false,
         interpolation: {
             escapeValue: false, // react already safes from xss
+        },
+        detector: {
+            lookupLocalStorage: "i18nextLng",
         },
         resources,
     });

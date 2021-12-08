@@ -1,0 +1,22 @@
+.language-switcher-form-control {
+    width: 100%;
+    padding: 1.3rem !important;
+    .MuiInputBase-root {
+        color: #ffffff;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border-color: white;
+    }
+    .MuiSelect-icon {
+        color: white;
+    }
+    .MuiOutlinedInput-root:hover,
+    .MuiOutlinedInput-root.Mui-focused {
+        .MuiOutlinedInput-notchedOutline {
+            border-color: white;
+        }
+        .MuiSelect-icon {
+            color: white;
+        }
+    }
+}

@@ -21,6 +21,7 @@ function App() {
 
     const [walletChecked, setWalletChecked] = useState(false);
 
+    const appLanguage = useSelector<IReduxState, string>(state => state.app.language);
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
     const isAppLoaded = useSelector<IReduxState, boolean>(state => !Boolean(state.app.marketPrice));
 
@@ -105,7 +106,7 @@ function App() {
     if (isAppLoading) return <Loading />;
 
     return (
-        <ViewBase>
+        <ViewBase key={appLanguage}>
             <Switch>
                 <Route exact path="/dashboard">
                     <Dashboard />
