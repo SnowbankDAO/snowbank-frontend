@@ -7,6 +7,7 @@
     "UnstakingStakedSB": "Unstaking sSB",
     "YourStakedBalance": "Your Staked Balance",
     "YourWrappedStakedBalance": "Your Wrapped Staked Balance",
+    "WrappedTokenEquivalent": "Your Wrapped sSB is equivalent to",
     "NextRewardAmount": "Next Reward Amount",
     "NextRewardYield": "Next Reward Yield",
     "ROIFiveDayRate": "$t(ROI) ($t(FiveDayRate))",
