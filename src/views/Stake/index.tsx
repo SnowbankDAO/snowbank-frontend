@@ -131,6 +131,12 @@ function Stake() {
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
     }).format(sumOfAllBalance * app.marketPrice);
+    const valueOfYourNextRewardAmount = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+    }).format(Number(nextRewardValue) * app.marketPrice);
 
     return (
         <div className="stake-view">
@@ -357,6 +363,11 @@ function Stake() {
                                             <div className="data-row">
                                                 <p className="data-row-name">{t("stake:ValueOfYourStakedSB")}</p>
                                                 <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfStakedBalance}</>}</p>
+                                            </div>
+
+                                            <div className="data-row">
+                                                <p className="data-row-name">{t("stake:ValueOfYourNextRewardAmount")}</p>
+                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfYourNextRewardAmount}</>}</p>
                                             </div>
 
                                             {Number(trimmedWrappedStakedSBBalance) > 0 && (
