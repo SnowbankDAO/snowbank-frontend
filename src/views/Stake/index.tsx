@@ -298,11 +298,21 @@ function Stake() {
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedSSBBalance} sSB</>}</p>
                                         </div>
 
-                                        <div className="data-row">
-                                            <p className="data-row-name">{t("stake:YourWrappedStakedBalance")}</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedWrappedStakedSBBalance} wsSB</>}</p>
-                                        </div>
+                                        {Number(trimmedWrappedStakedSBBalance) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name">{t("stake:YourWrappedStakedBalance")}</p>
+                                                <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trimmedWrappedStakedSBBalance} wsSB</>}</p>
+                                            </div>
+                                        )}
 
+                                        {Number(trimmedWrappedStakedSBBalance) > 0 && (
+                                            <div className="data-row">
+                                                <p className="data-row-name">{t("stake:WrappedTokenEquivalent")}</p>
+                                                <p className="data-row-value">
+                                                    {isAppLoading ? <Skeleton width="80px" /> : <>({trim(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex), 6)} sSB)</>}
+                                                </p>
+                                            </div>
+                                        )}
                                         <div className="data-row">
                                             <p className="data-row-name">{t("stake:NextRewardAmount")}</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} SB</>}</p>
@@ -349,10 +359,12 @@ function Stake() {
                                                 <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfStakedBalance}</>}</p>
                                             </div>
 
-                                            <div className="data-row">
-                                                <p className="data-row-name">{t("stake:ValueOfYourWrappedStakedSB")}</p>
-                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfWrappedStakedBalance}</>}</p>
-                                            </div>
+                                            {Number(trimmedWrappedStakedSBBalance) > 0 && (
+                                                <div className="data-row">
+                                                    <p className="data-row-name">{t("stake:ValueOfYourWrappedStakedSB")}</p>
+                                                    <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfWrappedStakedBalance}</>}</p>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
