@@ -1,0 +1,26 @@
+{
+    "SnowglobeTitle": "Snowglobe (❄️,❄️)",
+    "SnowglobeWarning": "Bei den angezeigten Finanzprognosen oder Renditen handelt es sich lediglich um geschätzte Vorhersagen, die hypothetisch sind, nicht auf tatsächlichen Anlageergebnissen beruhen und keine Garantie für zukünftige Ergebnisse darstellen. Geschätzte Prognosen stellen keine tatsächlichen Ergebnisse einer Transaktion dar oder garantieren diese, weder wird eine Zusicherung gemacht, dass eine Transaktion ähnliche Ergebnisse oder Gewinne wie die gezeigten erzielen wird oder wahrscheinlich erzielen wird.",
+    "EstimateYourReturns": "Schätzen Sie ihre Gewinne",
+    "CurrentSBPrice": "Aktueller SB Marktpreis",
+    "CurrentRewardYield": "Aktuelle Rendite",
+    "YourStakedSBBalance": "Ihr sSB Kontostand",
+    "StakedSBAmount": "Kontostand sSB",
+    "RewardYieldPercent": "Rendite (%)",
+    "SBPriceAtPurchase": "SB Preis beim Kaufen in USD ($)",
+    "FutureSBMarketPrice": "Zukünftiger SB Marktpreis in USD ($)",
+    "YourInitialInvestment": "Ihre anfängliche Investition",
+    "CurrentWealth": "Aktueller Reichtum",
+    "SBRewardsEstimation": "Möglicher SB Reward",
+    "PotentialReturn": "Möglicher Gewinn",
+    "PotentialNumberLambo": "Mögliche Anzahl an Lambos*",
+    "LamboHelpText":"Lamborghini Huracán, keine andere Optionen",
+    "Current": "Aktuell",
+    "EnterStakedSBAmount": "Anzahl staked sSB eingeben",
+    "EnterRewardYieldPercent": "Rendite eingeben (%)",
+    "EnterBuyPrice": "Einkaufspreis eingeben",
+    "EnterFuturePrice": "Zukünftigen Verkaufspreis eingeben",
+    "Duration": "Dauer",
+    "ConnectYourWalletToUseSnowglobe": "Verbinden Sie Ihr Wallet um Snowglobe verwenden zu können"
+}
+

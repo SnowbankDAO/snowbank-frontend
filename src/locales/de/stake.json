@@ -1,0 +1,21 @@
+{
+    "StakeTitle": "Stake (3,3)",
+    "ConnectYourWalletToStake": "Verbinde dein Wallet um SB Token zu staken!",
+    "Stake": "Stake",
+    "Unstake": "Unstake",
+    "StakingSB": "Staking SB",
+    "UnstakingStakedSB": "Unstaking sSB",
+    "YourStakedBalance": "Ihr Staked Kontostand",
+    "YourWrappedStakedBalance": "Ihr Wrapped Staked Kontostand",
+    "NextRewardAmount": "Nächster Reward",
+    "NextRewardYield": "Nächste Rendite",
+    "ROIFiveDayRate": "$t(ROI) ($t(FiveDayRate))",
+    "ValueOfYourSB": "Wert Ihrer SB",
+    "ValueOfYourStakedSB": "Wert Ihrer Staked SB",
+    "ValueOfYourWrappedStakedSB": "Wert Ihrer Wrapped Staked SB",
+    "Staking": "staking",
+    "Unstaking": "unstaking",
+    "ApproveStaking": "Staking bestätigen",
+    "ApproveUnstaking": "Unstaking bestätigen",
+    "ApproveNote": "Notiz: Die \"Bestätigen\" Transaktion ist nur vor dem ersten mal staking/unstaking abgefragt; für folgendes staking/unstaking müssen sie nur die \"Stake\" oder \"Unstake\" Transaktion durchführen."
+}
