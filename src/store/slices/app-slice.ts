@@ -38,12 +38,12 @@ export const loadAppDetails = createAsyncThunk(
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances[0] + tokenBalances[1] + tokenBalances[2] / 2 + tokenBalances[3] / 2;
+        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
 
-        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1);
+        const rfvTreasury = tokenBalances[0] + tokenBalances[1] + tokenBalances[2] / 2 + tokenBalances[3] / 2;
 
         const daoSb = await sbContract.balanceOf(addresses.DAO_ADDRESS);
         const daoSbAmount = Number(ethers.utils.formatUnits(daoSb, "gwei"));
@@ -54,7 +54,7 @@ export const loadAppDetails = createAsyncThunk(
         const LpSbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
         const sbSupply = totalSupply - LpSbAmount - daoSbAmount;
 
-        const rfv = treasuryBalance / sbSupply;
+        const rfv = rfvTreasury / sbSupply;
         const deltaMarketPriceRfv = ((rfv - marketPrice) / rfv) * 100;
 
         const epoch = await stakingContract.epoch();
