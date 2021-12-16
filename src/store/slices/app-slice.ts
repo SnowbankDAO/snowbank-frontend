@@ -38,18 +38,24 @@ export const loadAppDetails = createAsyncThunk(
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
+        const treasuryBalance = tokenBalances[0] + tokenBalances[1] + tokenBalances[2] / 2 + tokenBalances[3] / 2;
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
+
         const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1);
+
+        const daoSb = await sbContract.balanceOf(addresses.DAO_ADDRESS);
+        const daoSbAmount = Number(ethers.utils.formatUnits(daoSb, "gwei"));
 
         const sbBondsAmountsPromises = allBonds.map(bond => bond.getSbAmount(networkID, provider));
         const sbBondsAmounts = await Promise.all(sbBondsAmountsPromises);
-        const sbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
-        const sbSupply = totalSupply - sbAmount;
 
-        const rfv = treasuryBalance / totalSupply;
+        const LpSbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
+        const sbSupply = totalSupply - LpSbAmount - daoSbAmount;
+
+        const rfv = treasuryBalance / sbSupply;
+        const deltaMarketPriceRfv = ((rfv - marketPrice) / rfv) * 100;
 
         const epoch = await stakingContract.epoch();
         const stakingReward = epoch.distribute;
@@ -76,6 +82,7 @@ export const loadAppDetails = createAsyncThunk(
             stakingTVL,
             stakingRebase,
             marketPrice,
+            deltaMarketPriceRfv,
             currentBlockTime,
             nextRebase,
             rfv,
@@ -92,6 +99,7 @@ export interface IAppSlice {
     loading: boolean;
     stakingTVL: number;
     marketPrice: number;
+    deltaMarketPriceRfv: number;
     marketCap: number;
     circSupply: number;
     currentIndex: string;

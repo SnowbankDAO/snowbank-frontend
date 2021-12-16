@@ -23,6 +23,8 @@
     "CurrentIndex": "Current Index",
     "BackingPerSB": "Backing per $SB",
     "Runway": "Runway",
+    "RiskFreeValue": "Risk Free Value (RFV)",
+    "RiskFreeValueDelta": "Delta Market Price / RFV",
     "ConnectWallet": "Connect Wallet",
     "Disconnect": "Disconnect",
     "Dashboard": "Dashboard",
