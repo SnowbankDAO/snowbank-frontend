@@ -56,21 +56,21 @@ export const mimSb = new LPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
 });
 
-export const mimSdog = new LPBond({
-    name: "mim_sdog_lp",
-    displayName: "SDOG-MIM LP",
-    bondToken: "MIM",
-    bondIconSvg: MimSdogIcon,
-    bondContractABI: LpBondContract,
-    reserveContractAbi: LpReserveContract,
-    networkAddrs: {
-        [Networks.AVAX]: {
-            bondAddress: "0x0d71d9616f6844f12f1ce1516aa67817754517ff",
-            reserveAddress: "0xa3f1f5076499ec37d5bb095551f85ab5a344bb58",
-        },
-    },
-    lpUrl: "https://traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xdE9E52F1838951e4d2bb6C59723B003c353979b6",
-});
+// export const mimSdog = new LPBond({
+//     name: "mim_sdog_lp",
+//     displayName: "SDOG-MIM LP",
+//     bondToken: "MIM",
+//     bondIconSvg: MimSdogIcon,
+//     bondContractABI: LpBondContract,
+//     reserveContractAbi: LpReserveContract,
+//     networkAddrs: {
+//         [Networks.AVAX]: {
+//             bondAddress: "0x0d71d9616f6844f12f1ce1516aa67817754517ff",
+//             reserveAddress: "0xa3f1f5076499ec37d5bb095551f85ab5a344bb58",
+//         },
+//     },
+//     lpUrl: "https://traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xdE9E52F1838951e4d2bb6C59723B003c353979b6",
+// });
 
 export const avaxSb = new CustomLPBond({
     name: "avax_sb_lp",
@@ -88,4 +88,4 @@ export const avaxSb = new CustomLPBond({
     lpUrl: "https://traderjoexyz.com/#/pool/AVAX/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
 });
 
-export default [mim, wavax, mimSb, avaxSb, mimSdog];
+export default [mim, wavax, mimSb, avaxSb];

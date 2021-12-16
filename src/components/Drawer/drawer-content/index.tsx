@@ -5,6 +5,7 @@ import BondIcon from "../../../assets/icons/bond.svg";
 import BuyIcon from "../../../assets/icons/buy.svg";
 import BorrowIcon from "../../../assets/icons/borrow.svg";
 import Snowglobe from "../../../assets/icons/snowglobe.svg";
+import GovIcon from "../../../assets/icons/governance.svg";
 
 import ProIcon from "../../../assets/icons/pro.svg";
 import SnowbankIcon from "../../../assets/icons/snowbank-nav-header.svg";
@@ -100,19 +101,26 @@ function NavContent() {
                         </div>
                     </Link>
 
-                    {/* <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
+                    <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={BorrowIcon} />
                             <p>{t("Borrow")}</p>
                             <span>{t("ComingSoon")}</span>
                         </div>
-                    </Link> */}
+                    </Link>
 
-                    <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
+                    {/* <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={ProIcon} />
                             <p>{t("SBPro")}</p>
                             <span>{t("ComingSoon")}</span>
+                        </div>
+                    </Link> */}
+
+                    <Link href="https://snapshot.org/#/snowbankgovernance.eth" target="_blank" className="button-dapp-menu">
+                        <div className="dapp-menu-item">
+                            <img alt="" src={GovIcon} />
+                            <p>{t("Governance")}</p>
                         </div>
                     </Link>
                 </div>
