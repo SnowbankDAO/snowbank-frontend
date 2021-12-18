@@ -105,8 +105,6 @@ function Stake() {
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
     const stakingRebasePercentage = trim(stakingRebase * 100, 4);
     const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedSSBBalance), 6);
-    const wrappedTokenEquivalent = trim(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex), 6);
-    const effectiveNextRewardValue = trim(Number(nextRewardValue + (Number(stakingRebasePercentage) / 100) * Number(wrappedTokenEquivalent)), 6);
     const valueOfSB = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -139,12 +137,6 @@ function Stake() {
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
     }).format(Number(nextRewardValue) * app.marketPrice);
-    const valueOfYourEffectiveNextRewardAmount = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 2,
-    }).format(Number(effectiveNextRewardValue) * app.marketPrice);
 
     return (
         <div className="stake-view">
@@ -322,20 +314,15 @@ function Stake() {
                                         {Number(trimmedWrappedStakedSBBalance) > 0 && (
                                             <div className="data-row">
                                                 <p className="data-row-name">{t("stake:WrappedTokenEquivalent")}</p>
-                                                <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>({wrappedTokenEquivalent} sSB)</>}</p>
+                                                <p className="data-row-value">
+                                                    {isAppLoading ? <Skeleton width="80px" /> : <>({trim(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex), 6)} sSB)</>}
+                                                </p>
                                             </div>
                                         )}
                                         <div className="data-row">
                                             <p className="data-row-name">{t("stake:NextRewardAmount")}</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} SB</>}</p>
                                         </div>
-
-                                        {Number(trimmedWrappedStakedSBBalance) > 0 && (
-                                            <div className="data-row">
-                                                <p className="data-row-name">{t("stake:EffectiveNextRewardAmount")}</p>
-                                                <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{effectiveNextRewardValue} SB</>}</p>
-                                            </div>
-                                        )}
 
                                         <div className="data-row">
                                             <p className="data-row-name">{t("stake:NextRewardYield")}</p>
@@ -381,11 +368,6 @@ function Stake() {
                                             <div className="data-row">
                                                 <p className="data-row-name">{t("stake:ValueOfYourNextRewardAmount")}</p>
                                                 <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfYourNextRewardAmount}</>}</p>
-                                            </div>
-
-                                            <div className="data-row">
-                                                <p className="data-row-name">{t("stake:ValueOfYourEffectiveNextRewardAmount")}</p>
-                                                <p className="data-row-value"> {isAppLoading ? <Skeleton width="80px" /> : <>{valueOfYourEffectiveNextRewardAmount}</>}</p>
                                             </div>
 
                                             {Number(trimmedWrappedStakedSBBalance) > 0 && (
