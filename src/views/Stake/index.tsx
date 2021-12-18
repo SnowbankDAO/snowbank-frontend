@@ -106,7 +106,7 @@ function Stake() {
     const stakingRebasePercentage = trim(stakingRebase * 100, 4);
     const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedSSBBalance), 6);
     const wrappedTokenEquivalent = trim(Number(trimmedWrappedStakedSBBalance) * Number(currentIndex), 6);
-    const effectiveNextRewardValue = trim(Number(nextRewardValue + (Number(stakingRebasePercentage) / 100) * Number(wrappedTokenEquivalent)), 6);
+    const effectiveNextRewardValue = trim(Number(Number(nextRewardValue) + (Number(stakingRebasePercentage) / 100) * Number(wrappedTokenEquivalent)), 6);
     const valueOfSB = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
