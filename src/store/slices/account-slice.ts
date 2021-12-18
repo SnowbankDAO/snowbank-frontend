@@ -84,7 +84,7 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     if (addresses.SSB_ADDRESS) {
         const ssbContract = new ethers.Contract(addresses.SSB_ADDRESS, MemoTokenContract, provider);
         ssbBalance = await ssbContract.balanceOf(address);
-        wrapAllowance = await ssbContract.balanceOf(addresses.WSSB_ADDRESS);
+        wrapAllowance = await ssbContract.allowance(address, addresses.WSSB_ADDRESS);
         unstakeAllowance = await ssbContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 

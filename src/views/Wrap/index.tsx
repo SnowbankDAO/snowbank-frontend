@@ -32,6 +32,7 @@ function Stake() {
     });
 
     const wrapAllowance = useSelector<IReduxState, number>(state => {
+        console.log(state.account.wrapping.ssbAllowance);
         return state.account.wrapping.ssbAllowance;
     });
     const sbBalance = useSelector<IReduxState, string>(state => {

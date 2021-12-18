@@ -14,5 +14,5 @@
     "Wrapping": "wrapping",
     "Unwrapping": "unwrapping",
     "ApproveWrapping": "Approve Wrapping",
-    "ApproveNote": "Note: The \"Approve\" transaction is only needed when wrapping/unwrapping for the first time; subsequent wrapping/unwrapping only requires you to perform the \"Wrap\" or \"Unstake\" transaction."
+    "ApproveNote": "Note: The \"Approve\" transaction is only needed when wrapping/unwrapping for the first time; subsequent wrapping/unwrapping only requires you to perform the \"Wrap\" or \"Unwrap\" transaction."
 }
