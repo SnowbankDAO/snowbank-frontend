@@ -9,6 +9,7 @@
     "YourWrappedStakedBalance": "Your Wrapped Staked Balance",
     "WrappedTokenEquivalent": "Your Wrapped sSB is equivalent to",
     "NextRewardAmount": "Next Reward Amount",
+    "EffectiveNextRewardAmount": "Effective Next Reward Amount",
     "NextRewardYield": "Next Reward Yield",
     "ROIFiveDayRate": "$t(ROI) ($t(FiveDayRate))",
     "ValueOfYourSB": "Value of Your SB",
@@ -19,5 +20,6 @@
     "ApproveStaking": "Approve Staking",
     "ApproveUnstaking": "Approve Unstaking",
     "ApproveNote": "Note: The \"Approve\" transaction is only needed when staking/unstaking for the first time; subsequent staking/unstaking only requires you to perform the \"Stake\" or \"Unstake\" transaction.",
-    "ValueOfYourNextRewardAmount": "Value of Your Next Reward Amount"
+    "ValueOfYourNextRewardAmount": "Value of Your Next Reward Amount",
+    "ValueOfYourEffectiveNextRewardAmount": "Value of Your Effective Next Reward Amount"
 }
