@@ -273,13 +273,26 @@
         font-weight: 500;
         font-size: 14px;
         color: #ffffff;
+
+        a {
+            margin-left: 10px;
+            font-family: Mono;
+            color: #d0c4ff;
+        }
     }
+    
     .data-row-value {
         font-family: Montserrat;
         font-size: 14px;
         line-height: 17px;
         color: #ffffff;
         font-feature-settings: "ss09", "ss11";
+
+        a {
+            margin-left: 4px;
+            font-family: Mono;
+            color: #d0c4ff;
+        }
     }
 }
 
