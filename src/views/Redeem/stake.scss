@@ -39,6 +39,38 @@
             }
         }
 
+        .stake-card-header-title-redistribution {
+            font-family: Nib;
+            font-weight: 300;
+                font-size: 36px;
+                color: #ffffff;
+                margin-bottom: 16px;
+                font-feature-settings: "ss01";
+                text-align: center;
+        }
+
+        .stake-card-redeem-text {
+            font-family: Montserrat;
+            font-weight: 400;
+            font-size: 16px;
+            color: #fff;
+            font-feature-settings: "ss01";
+            line-height: 22px;
+            margin-bottom: 12px;
+
+            b {
+                font-family: Montserrat Medium;
+                font-weight: 500;
+            }
+        }
+
+        .stake-card-link-text {
+            font-family: Mono;
+            font-weight: 400;
+            font-size: 14px;
+            color: #d0c4ff;
+        }
+
         .stake-card-metrics {
             display: flex;
             width: 100%;
