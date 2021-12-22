@@ -142,12 +142,12 @@ function Redeem() {
                                 <p className="stake-card-header-title-redistribution">Redistribution</p>
                             </div>
                             <p className="stake-card-redeem-text">
-                                <b>Swap your SB for a fixed MIM value equal to the SB risk-free value (RFV)</b>. This redistribution event is available from December 23rd to
-                                January 3rd. SB swapped for MIM are renounced and will be burnt at the end of the event.
+                                <b>Swap your SB for a fixed MIM value equal to the SB risk-free value (RFV)</b>. Redistribution event is available from December 23rd to January
+                                3rd. SB swapped for MIM are renounced and will be burnt at the end of the event.
                             </p>
                             <p className="stake-card-redeem-text">
-                                The redistribution page and redeem feature will only be available until January 3rd. In order to maintain the risk-free value fixed for the duration
-                                of the rebirth event, staking rewards and minting will be paused.
+                                <b>The redistribution page and redeem feature will only be available until January 3rd</b>. In order to maintain the risk-free value fixed for the
+                                duration of the rebirth event, staking rewards and minting will be paused on December 23rd.
                             </p>
                             <Link href="https://docs.snowbank.finance/events/rebirth-redistribution" target="_blank" className="stake-card-link-text">
                                 Learn more about Snowbank's Redistribution - Rebirth event and details here.
