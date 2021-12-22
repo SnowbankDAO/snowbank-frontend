@@ -44,6 +44,7 @@
     "CopyToClipboard": "Copy to clipboard",
     "ErrorMessage": "Error message",
     "TimeToNextRebase": "{{time}} to Next rebase",
+    "TimeToRedeem": "{{time}} left to redeem",
     "Rebasing": "Rebasing",
     "AddTokenToWallet": "ADD TOKEN TO WALLET",
     "messages": {

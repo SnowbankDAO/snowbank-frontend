@@ -28,6 +28,7 @@ export const loadAppDetails = createAsyncThunk(
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
         const ssbContract = new ethers.Contract(addresses.SSB_ADDRESS, MemoTokenContract, provider);
         const sbContract = new ethers.Contract(addresses.SB_ADDRESS, TimeTokenContract, provider);
+        const mimContract = new ethers.Contract(addresses.MIM_ADDRESS, TimeTokenContract, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * mimPrice;
 
@@ -42,6 +43,8 @@ export const loadAppDetails = createAsyncThunk(
         const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
 
         const redeemRfv = (await redeemContract.RFV()) / Math.pow(10, 9);
+        const redeemSbSent = (await sbContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 9);
+        const redeemMimAvailable = (await mimContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 18);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
@@ -91,6 +94,8 @@ export const loadAppDetails = createAsyncThunk(
             rfv,
             runway,
             redeemRfv,
+            redeemSbSent,
+            redeemMimAvailable,
         };
     },
 );
@@ -119,6 +124,8 @@ export interface IAppSlice {
     rfv: number;
     runway: number;
     redeemRfv: number;
+    redeemSbSent: number;
+    redeemMimAvailable: number;
 }
 
 const appSlice = createSlice({
