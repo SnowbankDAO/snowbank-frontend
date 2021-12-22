@@ -51,22 +51,17 @@ function NavContent() {
                         </div>
                     </Link>
 
-                    <Link component={NavLink} to="/stake" className="button-dapp-menu">
+                    <Link component={NavLink} to="/redeem" className="button-dapp-menu">
                         <div className="dapp-menu-item">
-<<<<<<< HEAD
                             <img alt="" src={RedeemIcon} />
-                            <p>{t("Redistribution")}</p>
-=======
-                            <img alt="" src={StakeIcon} />
-                            <p>{t("Stake")}</p>
->>>>>>> parent of 4108dda (Visual modifs)
+                            <p>Redistribution</p>
                         </div>
                     </Link>
 
-                    <Link component={NavLink} to="/redeem" className="button-dapp-menu">
+                    <Link component={NavLink} to="/stake" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={StakeIcon} />
-                            <p>{t("Redeem")}</p>
+                            <p>{t("Stake")}</p>
                         </div>
                     </Link>
 

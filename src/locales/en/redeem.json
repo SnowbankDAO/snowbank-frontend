@@ -18,6 +18,6 @@
     "Unstaking": "unstaking",
     "ApproveStaking": "Approve Redeeming",
     "ApproveUnstaking": "Approve Unstaking",
-    "ApproveNote": "Note: The \"Approve\" transaction is only needed when redeeming for the first time; subsequent redeems only requires you to perform the \"Stake\" or \"Unstake\" transaction.",
+    "ApproveNote": "Note: The \"Approve\" transaction is only needed when redeeming for the first time; subsequent redeems only requires you to perform the \"Redeem\" transaction.",
     "ValueOfYourNextRewardAmount": "Value of Your Next Reward Amount"
 }

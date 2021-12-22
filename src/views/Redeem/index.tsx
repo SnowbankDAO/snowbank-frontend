@@ -147,40 +147,28 @@ function Redeem() {
                         <Grid item>
                             <div className="stake-card-metrics">
                                 <Grid container spacing={2}>
-                                    <Grid item xs={6} sm={3} md={3} lg={3}>
+                                    <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="stake-card-apy">
-                                            <p className="stake-card-metrics-title">{t("CurrentRfv")}</p>
+                                            <p className="stake-card-metrics-title">Risk-Free Value</p>
                                             <p className="stake-card-metrics-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(redeemRfv), 4)} MIM</>}</p>
                                         </div>
                                     </Grid>
 
-                                    <Grid item xs={6} sm={3} md={3} lg={3}>
+                                    <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="stake-card-index">
-                                            <p className="stake-card-metrics-title">{t("Total SB Sent")}</p>
+                                            <p className="stake-card-metrics-title">Total SB Renounced</p>
                                             <p className="stake-card-metrics-value">
                                                 {redeemSbSent !== undefined ? <>{Math.floor(Number(redeemSbSent)).toLocaleString()} SB</> : <Skeleton width="150px" />}
                                             </p>
                                         </div>
                                     </Grid>
 
-                                    <Grid item xs={6} sm={3} md={3} lg={3}>
+                                    <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="stake-card-index">
-                                            <p className="stake-card-metrics-title">{t("Total MIM Redeemed")}</p>
+                                            <p className="stake-card-metrics-title">Total Treasury Redeemed</p>
                                             <p className="stake-card-metrics-value">
                                                 {redeemSbSent !== undefined && redeemRfv !== undefined ? (
                                                     <>{Math.floor(Number(redeemSbSent * redeemRfv)).toLocaleString()} MIM</>
-                                                ) : (
-                                                    <Skeleton width="150px" />
-                                                )}
-                                            </p>
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={6} sm={3} md={3} lg={3}>
-                                        <div className="stake-card-index">
-                                            <p className="stake-card-metrics-title">{t("Total MIM Remaining")}</p>
-                                            <p className="stake-card-metrics-value">
-                                                {redeemSbSent !== undefined && redeemRfv !== undefined ? (
-                                                    <>{Math.floor(Number(redeemMimAvailable)).toLocaleString()} MIM</>
                                                 ) : (
                                                     <Skeleton width="150px" />
                                                 )}
@@ -250,19 +238,13 @@ function Redeem() {
 
                                     <div className="stake-user-data">
                                         <div className="data-row">
-                                            <p className="data-row-name">{t("Output MIM Amount")}</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(redeemRfv) * Number(quantity), 4)} SB</>}</p>
+                                            <p className="data-row-name">MIM Amount You Will Redeem</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(redeemRfv) * Number(quantity), 4)} MIM</>}</p>
                                         </div>
-                                    </div>
-
-                                    <div className="stake-user-data">
                                         <div className="data-row">
                                             <p className="data-row-name">{t("YourBalance")}</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(sbBalance), 4)} SB</>}</p>
                                         </div>
-                                    </div>
-
-                                    <div className="stake-user-data">
                                         <div className="data-row">
                                             <p className="data-row-name">{t("Total MIM Redeemable")}</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(sbBalance) * redeemRfv, 4)} MIM</>}</p>
