@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Social from "./social";
 import StakeIcon from "../../../assets/icons/stake.svg";
+import RedeemIcon from "../../../assets/icons/swap.svg";
 import BondIcon from "../../../assets/icons/bond.svg";
 import BuyIcon from "../../../assets/icons/buy.svg";
 import BorrowIcon from "../../../assets/icons/borrow.svg";
@@ -47,6 +48,13 @@ function NavContent() {
                         <div className="dapp-menu-item">
                             <img alt="" src={DashboardIcon} />
                             <p>{t("Dashboard")}</p>
+                        </div>
+                    </Link>
+
+                    <Link component={NavLink} to="/redeem" className="button-dapp-menu">
+                        <div className="dapp-menu-item">
+                            <img alt="" src={RedeemIcon} />
+                            <p>Redistribution</p>
                         </div>
                     </Link>
 

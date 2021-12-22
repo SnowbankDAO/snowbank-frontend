@@ -11,6 +11,7 @@
     "Max": "Max",
     "Approve": "Approve",
     "YourBalance": "Your Balance",
+    "CurrentRfv": "Current RFV",
     "ROI": "ROI",
     "FiveDayRate": "5-day rate",
     "SBPrice": "SB Price",
@@ -43,6 +44,7 @@
     "CopyToClipboard": "Copy to clipboard",
     "ErrorMessage": "Error message",
     "TimeToNextRebase": "{{time}} to Next rebase",
+    "TimeToRedeem": "{{time}} left to redeem",
     "Rebasing": "Rebasing",
     "AddTokenToWallet": "ADD TOKEN TO WALLET",
     "messages": {

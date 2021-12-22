@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { StakingContract, MemoTokenContract, TimeTokenContract } from "../../abi";
+import { StakingContract, MemoTokenContract, TimeTokenContract, RedeemContract } from "../../abi";
 import { setAll, getMarketPrice, getTokenPrice } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
@@ -23,10 +23,12 @@ export const loadAppDetails = createAsyncThunk(
         const ohmAmount = 1512.12854088 * ohmPrice;
 
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
+        const redeemContract = new ethers.Contract(addresses.REDEEM_ADDRESS, RedeemContract, provider);
         const currentBlock = await provider.getBlockNumber();
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
         const ssbContract = new ethers.Contract(addresses.SSB_ADDRESS, MemoTokenContract, provider);
         const sbContract = new ethers.Contract(addresses.SB_ADDRESS, TimeTokenContract, provider);
+        const mimContract = new ethers.Contract(addresses.MIM_ADDRESS, TimeTokenContract, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * mimPrice;
 
@@ -39,6 +41,10 @@ export const loadAppDetails = createAsyncThunk(
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
         const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
+
+        const redeemRfv = (await redeemContract.RFV()) / Math.pow(10, 9);
+        const redeemSbSent = (await sbContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 9);
+        const redeemMimAvailable = (await mimContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 18);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
@@ -87,6 +93,9 @@ export const loadAppDetails = createAsyncThunk(
             nextRebase,
             rfv,
             runway,
+            redeemRfv,
+            redeemSbSent,
+            redeemMimAvailable,
         };
     },
 );
@@ -114,6 +123,9 @@ export interface IAppSlice {
     totalSupply: number;
     rfv: number;
     runway: number;
+    redeemRfv: number;
+    redeemSbSent: number;
+    redeemMimAvailable: number;
 }
 
 const appSlice = createSlice({

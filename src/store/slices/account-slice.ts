@@ -56,6 +56,9 @@ interface IUserAccountDetails {
         ssb: string;
         wssb: string;
     };
+    redeeming: {
+        sb: number;
+    };
     staking: {
         sb: number;
         ssb: number;
@@ -68,6 +71,7 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     let wssbBalance = 0;
     let stakeAllowance = 0;
     let unstakeAllowance = 0;
+    let redeemAllowance = 0;
 
     const addresses = getAddresses(networkID);
 
@@ -75,6 +79,7 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         const sbContract = new ethers.Contract(addresses.SB_ADDRESS, TimeTokenContract, provider);
         sbBalance = await sbContract.balanceOf(address);
         stakeAllowance = await sbContract.allowance(address, addresses.STAKING_HELPER_ADDRESS);
+        redeemAllowance = await sbContract.allowance(address, addresses.REDEEM_ADDRESS);
     }
 
     if (addresses.SSB_ADDRESS) {
@@ -93,6 +98,9 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
             wssb: ethers.utils.formatEther(wssbBalance),
             ssb: ethers.utils.formatUnits(ssbBalance, "gwei"),
             sb: ethers.utils.formatUnits(sbBalance, "gwei"),
+        },
+        redeeming: {
+            sb: Number(redeemAllowance),
         },
         staking: {
             sb: Number(stakeAllowance),
@@ -238,6 +246,9 @@ export interface IAccountSlice {
         sb: string;
     };
     loading: boolean;
+    redeeming: {
+        sb: number;
+    };
     staking: {
         sb: number;
         ssb: number;
@@ -250,6 +261,7 @@ const initialState: IAccountSlice = {
     bonds: {},
     balances: { wssb: "", ssb: "", sb: "" },
     staking: { sb: 0, ssb: 0 },
+    redeeming: { sb: 0 },
     tokens: {},
 };
 
