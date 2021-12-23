@@ -60,7 +60,7 @@ export const loadAppDetails = createAsyncThunk(
         const LpSbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
         const sbSupply = totalSupply - LpSbAmount - daoSbAmount;
 
-        const rfv = rfvTreasury / sbSupply;
+        const rfv = rfvTreasury / (sbSupply - redeemSbSent);
         const deltaMarketPriceRfv = ((rfv - marketPrice) / rfv) * 100;
 
         const epoch = await stakingContract.epoch();
