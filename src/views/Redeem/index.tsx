@@ -201,7 +201,7 @@ function Redeem() {
                                     <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="stake-card-index">
                                             <p className="stake-card-metrics-title">Total SB Renounced</p>
-                                            <p className="stake-card-metrics-value">{redeemSbSent !== undefined ? <>{redeemSbSent} SB</> : <Skeleton width="150px" />}</p>
+                                            <p className="stake-card-metrics-value">{redeemSbSent !== undefined ? <>{totalSBRedeemed} SB</> : <Skeleton width="150px" />}</p>
                                         </div>
                                     </Grid>
 
