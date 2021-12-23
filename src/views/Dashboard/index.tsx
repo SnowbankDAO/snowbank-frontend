@@ -24,7 +24,7 @@ function Dashboard() {
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">{t("RiskFreeValue")}</p>
-                                <p className="card-value">
+                                {/* <p className="card-value">
                                     {isAppLoading ? (
                                         <Skeleton width="250px" />
                                     ) : (
@@ -34,6 +34,18 @@ function Dashboard() {
                                             maximumFractionDigits: 2,
                                             minimumFractionDigits: 2,
                                         }).format(app.rfv)
+                                    )}
+                                </p> */}
+                                <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            maximumFractionDigits: 2,
+                                            minimumFractionDigits: 2,
+                                        }).format(app.redeemRfv)
                                     )}
                                 </p>
                             </div>
