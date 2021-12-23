@@ -22,6 +22,35 @@
   }
 }
 
+.dapp-information-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #EF6A8E;
+}
+
+.dapp-information-text {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  font-feature-settings: "ss01";
+  text-align: center;
+  padding: 2px;
+
+  a {
+    color: #d0c4ff;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .dapp-information-box{
+      display: none;
+  }
+}
+
+
 @media screen and (min-width: 960px) {
   .dapp-topbar{
     .dapp-topbar-slider-btn{

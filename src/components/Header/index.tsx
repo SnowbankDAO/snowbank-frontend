@@ -1,4 +1,4 @@
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import MenuIcon from "../../assets/icons/hamburger.svg";
@@ -47,6 +47,15 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
     return (
         <div className={`${classes.topBar} ${!drawe && classes.topBarShift}`}>
             <AppBar position="sticky" className={classes.appBar} elevation={0}>
+                <Box className="dapp-information-box">
+                    <p className="dapp-information-text">
+                        Staking rewards & minting have been paused for the duration of the redistribution event.{" "}
+                        <a href="https://docs.snowbank.finance/events/rebirth-redistribution" target="_blank">
+                            Learn more about the event here
+                        </a>
+                        .
+                    </p>
+                </Box>
                 <Toolbar disableGutters className="dapp-topbar">
                     <div onClick={handleDrawerToggle} className="dapp-topbar-slider-btn">
                         <img src={MenuIcon} alt="" />
