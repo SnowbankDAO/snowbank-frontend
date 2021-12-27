@@ -38,7 +38,7 @@ function NavContent() {
 
                 {address && (
                     <div className="wallet-link">
-                        <Davatar size={20} address={address} style={{ marginRight: 8 }} generatedAvatarType="jazzicon" />
+                        <Davatar size={20} address={address} generatedAvatarType="jazzicon" />
                         <Link href={`https://snowtrace.io/address/${address}`} target="_blank">
                             <p>{ensName || shorten(address)}</p>
                         </Link>
