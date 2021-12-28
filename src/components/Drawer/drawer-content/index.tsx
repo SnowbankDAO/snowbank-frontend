@@ -17,6 +17,8 @@ import useBonds from "../../../hooks/bonds";
 import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
+import useENS from "src/hooks/useENS";
+import Davatar from "@davatar/react";
 
 import { useTranslation } from "react-i18next";
 
@@ -25,6 +27,7 @@ function NavContent() {
 
     const address = useAddress();
     const { bonds } = useBonds();
+    const { ensName } = useENS(address);
 
     return (
         <div className="dapp-sidebar">
@@ -35,8 +38,9 @@ function NavContent() {
 
                 {address && (
                     <div className="wallet-link">
+                        <Davatar size={20} address={address} generatedAvatarType="jazzicon" />
                         <Link href={`https://snowtrace.io/address/${address}`} target="_blank">
-                            <p>{shorten(address)}</p>
+                            <p>{ensName || shorten(address)}</p>
                         </Link>
                     </div>
                 )}
