@@ -50,7 +50,7 @@ function Dashboard() {
                                             currency: "USD",
                                             maximumFractionDigits: 2,
                                             minimumFractionDigits: 2,
-                                        }).format(app.rfv)
+                                        }).format(app.rfv * Number(app.currentIndex))
                                     )}
                                 </p>
                             </div>
