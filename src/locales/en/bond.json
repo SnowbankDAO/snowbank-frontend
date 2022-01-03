@@ -18,6 +18,7 @@
     "MintPrice": "Mint Price",
     "Mint": "Mint",
     "MintBond": "Mint {{bond}}",
+    "RedeemBond": "Redeem {{bond}}",
     "Redeem": "Redeem",
     "Settings": "Settings",
     "Slippage": "Slippage",

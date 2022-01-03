@@ -39,7 +39,7 @@ export const wavax = new CustomBond({
             reserveAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
         },
     },
-    isActive: true,
+    isActive: false,
 });
 
 export const mimSb = new LPBond({
