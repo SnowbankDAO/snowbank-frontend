@@ -23,6 +23,7 @@ export const mim = new StableBond({
             reserveAddress: "0x130966628846BFd36ff31a822705796e8cb8C18D",
         },
     },
+    isActive: true,
 });
 
 export const wavax = new CustomBond({
@@ -38,6 +39,7 @@ export const wavax = new CustomBond({
             reserveAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
         },
     },
+    isActive: true,
 });
 
 export const mimSb = new LPBond({
@@ -54,6 +56,7 @@ export const mimSb = new LPBond({
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
+    isActive: true,
 });
 
 // export const mimSdog = new LPBond({
@@ -86,6 +89,7 @@ export const avaxSb = new CustomLPBond({
         },
     },
     lpUrl: "https://traderjoexyz.com/#/pool/AVAX/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
+    isActive: true,
 });
 
 export default [mim, wavax, mimSb, avaxSb];
