@@ -1,6 +1,6 @@
 {
     "MintTitle": "Turbines",
-    "MintInactiveTitle": "Inactive Turbines",
+    "MintInactiveTitle": "Retired Turbines",
     "ChooseToken": "Choose token",
     "ZapinAndMint": "Zapin & Mint",
     "ZapinApproveToken": "Approve {{token}}",
@@ -37,7 +37,7 @@
     "ClaimableRewards": "Claimable Rewards",
     "TimeFullyVested": "Time until fully vested",
     "ViewContract": "View Contract",
-    "Purchased": "Purchased",
+    "Purchased": "Locked",
     "FullyVested": "Fully Vested",
     "ApprovingBond": "Approving {{bond}}",
     "BondingBond": "Bonding {{bond}}",
