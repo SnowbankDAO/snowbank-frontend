@@ -73,12 +73,17 @@
     }
   }
 
+  .inactive-view-card {
+    margin-top: 20px;
+  }
+
   .MuiTableRow-root td:first-child {
     height: 100%;
   }
 
   .choose-bond-view-card-container{
     margin-top: 16px;
+    width: 100%;
 
     .bond-data-card {
       margin: auto !important;

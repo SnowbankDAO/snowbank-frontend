@@ -8,7 +8,7 @@ import { IReduxState } from "../../store/slices/state.interface";
 
 import { useTranslation } from "react-i18next";
 
-const END_DATE = new Date("01/04/2022");
+const END_DATE = new Date(1641286800000);
 
 function RedeemTimer() {
     const { t } = useTranslation();

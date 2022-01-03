@@ -49,7 +49,7 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
             <AppBar position="sticky" className={classes.appBar} elevation={0}>
                 <Box className="dapp-information-box">
                     <p className="dapp-information-text">
-                        Staking rewards & minting have been paused for the duration of the redistribution event.{" "}
+                        Staking rewards & turbines will restart Tuesday 4th at 4:00 am EST. The redistribution event will end at the same time.{" "}
                         <a href="https://docs.snowbank.finance/events/rebirth-redistribution" target="_blank">
                             Learn more about the event here
                         </a>

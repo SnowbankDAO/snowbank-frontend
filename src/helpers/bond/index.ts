@@ -7,6 +7,7 @@ import AvaxIcon from "../../assets/tokens/AVAX.svg";
 import mimSbIcon from "../../assets/tokens/SB-MIM.png";
 import AvaxSbIcon from "../../assets/tokens/SB-AVAX.png";
 import MimSdogIcon from "../../assets/tokens/SDOG-MIM.svg";
+import avaxUsdceIcon from "../../assets/tokens/AVAX-USDCe.png";
 
 import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
@@ -23,6 +24,7 @@ export const mim = new StableBond({
             reserveAddress: "0x130966628846BFd36ff31a822705796e8cb8C18D",
         },
     },
+    isActive: false,
 });
 
 export const wavax = new CustomBond({
@@ -38,6 +40,7 @@ export const wavax = new CustomBond({
             reserveAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
         },
     },
+    isActive: false,
 });
 
 export const mimSb = new LPBond({
@@ -54,7 +57,25 @@ export const mimSb = new LPBond({
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
+    isActive: true,
 });
+
+// export const avaxUsdce = new CustomLPBond({
+//     name: "usdce_avax_lp",
+//     displayName: "USDC.e-AVAX LP",
+//     bondToken: "AVAX",
+//     bondIconSvg: avaxUsdceIcon,
+//     bondContractABI: LpBondContract,
+//     reserveContractAbi: LpReserveContract,
+//     networkAddrs: {
+//         [Networks.AVAX]: {
+//             bondAddress: "0x5E831EF7B5B2824B6F327055d0193Ecf8dCAA480",
+//             reserveAddress: "0xa389f9430876455c36478deea9769b7ca4e3ddb1",
+//         },
+//     },
+//     lpUrl: "https://www.traderjoexyz.com/#/pool/0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+//     isActive: true,
+// });
 
 // export const mimSdog = new LPBond({
 //     name: "mim_sdog_lp",
@@ -86,6 +107,7 @@ export const avaxSb = new CustomLPBond({
         },
     },
     lpUrl: "https://traderjoexyz.com/#/pool/AVAX/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
+    isActive: true,
 });
 
 export default [mim, wavax, mimSb, avaxSb];
