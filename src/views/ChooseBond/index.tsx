@@ -82,9 +82,52 @@ function ChooseBond() {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {bonds.map(bond => (
-                                            <BondTableData key={bond.name} bond={bond} />
-                                        ))}
+                                        {bonds
+                                            .filter(bond => bond.isActive)
+                                            .map(bond => (
+                                                <BondTableData key={bond.name} bond={bond} />
+                                            ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Grid>
+                    )}
+                </div>
+            </Zoom>
+
+            <Zoom in={true}>
+                <div className="choose-bond-view-card inactive-view-card">
+                    <div className="choose-bond-view-card-header">
+                        <p className="choose-bond-view-card-title">{t("bond:MintInactiveTitle")}</p>
+                    </div>
+
+                    {!isSmallScreen && (
+                        <Grid container item>
+                            <TableContainer className="choose-bond-view-card-table">
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell align="center">
+                                                <p className="choose-bond-view-card-table-title">{t("bond:Mint")}</p>
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                <p className="choose-bond-view-card-table-title">{t("Price")}</p>
+                                            </TableCell>
+                                            <TableCell align="center">
+                                                <p className="choose-bond-view-card-table-title">{t("ROI")}</p>
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                <p className="choose-bond-view-card-table-title">{t("bond:Purchased")}</p>
+                                            </TableCell>
+                                            <TableCell align="right"></TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {bonds
+                                            .filter(bond => !bond.isActive)
+                                            .map(bond => (
+                                                <BondTableData key={bond.name} bond={bond} />
+                                            ))}
                                     </TableBody>
                                 </Table>
                             </TableContainer>
