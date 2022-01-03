@@ -95,13 +95,12 @@ function ChooseBond() {
                 </div>
             </Zoom>
 
-            <Zoom in={true}>
-                <div className="choose-bond-view-card inactive-view-card">
-                    <div className="choose-bond-view-card-header">
-                        <p className="choose-bond-view-card-title">{t("bond:MintInactiveTitle")}</p>
-                    </div>
-
-                    {!isSmallScreen && (
+            {!isSmallScreen && (
+                <Zoom in={true}>
+                    <div className="choose-bond-view-card inactive-view-card">
+                        <div className="choose-bond-view-card-header">
+                            <p className="choose-bond-view-card-title">{t("bond:MintInactiveTitle")}</p>
+                        </div>
                         <Grid container item>
                             <TableContainer className="choose-bond-view-card-table">
                                 <Table>
@@ -132,20 +131,39 @@ function ChooseBond() {
                                 </Table>
                             </TableContainer>
                         </Grid>
-                    )}
-                </div>
-            </Zoom>
-
+                    </div>
+                </Zoom>
+            )}
             {isSmallScreen && (
-                <div className="choose-bond-view-card-container">
-                    <Grid container item spacing={2}>
-                        {bonds.map(bond => (
-                            <Grid item xs={12} key={bond.name}>
-                                <BondDataCard key={bond.name} bond={bond} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </div>
+                <>
+                    <div className="choose-bond-view-card-container">
+                        <Grid container item spacing={2}>
+                            {bonds
+                                .filter(bond => bond.isActive)
+                                .map(bond => (
+                                    <Grid item xs={12} key={bond.name}>
+                                        <BondDataCard key={bond.name} bond={bond} />
+                                    </Grid>
+                                ))}
+                        </Grid>
+                    </div>
+                    <div className="choose-bond-view-card inactive-view-card">
+                        <div className="choose-bond-view-card-header">
+                            <p className="choose-bond-view-card-title">{t("bond:MintInactiveTitle")}</p>
+                        </div>
+                    </div>
+                    <div className="choose-bond-view-card-container">
+                        <Grid container item spacing={2}>
+                            {bonds
+                                .filter(bond => !bond.isActive)
+                                .map(bond => (
+                                    <Grid item xs={12} key={bond.name}>
+                                        <BondDataCard key={bond.name} bond={bond} />
+                                    </Grid>
+                                ))}
+                        </Grid>
+                    </div>
+                </>
             )}
         </div>
     );
