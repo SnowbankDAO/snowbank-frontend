@@ -55,12 +55,12 @@ function NavContent() {
                         </div>
                     </Link>
 
-                    <Link component={NavLink} to="/redeem" className="button-dapp-menu">
+                    {/* <Link component={NavLink} to="/redeem" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={RedeemIcon} />
                             <p>Redistribution</p>
                         </div>
-                    </Link>
+                    </Link> */}
 
                     <Link component={NavLink} to="/stake" className="button-dapp-menu">
                         <div className="dapp-menu-item">
