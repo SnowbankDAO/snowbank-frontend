@@ -8,6 +8,7 @@ import mimSbIcon from "../../assets/tokens/SB-MIM.png";
 import AvaxSbIcon from "../../assets/tokens/SB-AVAX.png";
 import MimSdogIcon from "../../assets/tokens/SDOG-MIM.svg";
 import avaxUsdceIcon from "../../assets/tokens/AVAX-USDCe.png";
+import mimAvaxIcon from "../../assets/tokens/MIM-AVAX.png";
 
 import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
@@ -77,6 +78,23 @@ export const mimSb = new LPBond({
 //     isActive: true,
 // });
 
+export const mimAvax = new LPBond({
+    name: "mim_avax_turbine",
+    displayName: "MIM-AVAX LP",
+    bondToken: "MIM",
+    bondIconSvg: mimAvaxIcon,
+    bondContractABI: LpBondContract,
+    reserveContractAbi: LpReserveContract,
+    networkAddrs: {
+        [Networks.AVAX]: {
+            bondAddress: "0x555d0112B1Ca9e468C04dAb37195b2A48c83F43E",
+            reserveAddress: "0x781655d802670bba3c89aebaaea59d3182fd755d",
+        },
+    },
+    lpUrl: "https://traderjoexyz.com/#/pool/AVAX/0x130966628846bfd36ff31a822705796e8cb8c18d",
+    isActive: true,
+});
+
 // export const mimSdog = new LPBond({
 //     name: "mim_sdog_lp",
 //     displayName: "SDOG-MIM LP",
@@ -110,4 +128,4 @@ export const avaxSb = new CustomLPBond({
     isActive: true,
 });
 
-export default [mim, wavax, mimSb, avaxSb];
+export default [mim, wavax, mimSb, avaxSb, mimAvax];
