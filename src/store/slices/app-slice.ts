@@ -54,7 +54,7 @@ export const loadAppDetails = createAsyncThunk(
         const daoSb = await sbContract.balanceOf(addresses.DAO_ADDRESS);
         const daoSbAmount = Number(ethers.utils.formatUnits(daoSb, "gwei"));
 
-        const sbBondsAmountsPromises = allBonds.map(bond => bond.getSbAmount(networkID, provider));
+        const sbBondsAmountsPromises = allBonds.filter(bond => bond.name !== "mim_avax_turbine").map(bond => bond.getSbAmount(networkID, provider));
         const sbBondsAmounts = await Promise.all(sbBondsAmountsPromises);
 
         const LpSbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
