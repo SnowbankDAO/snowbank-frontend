@@ -27,7 +27,7 @@ function Bond({ bond }: IBondProps) {
     const [slippage, setSlippage] = useState(0.5);
     const [recipientAddress, setRecipientAddress] = useState(address);
 
-    const [view, setView] = useState(0);
+    const [view, setView] = useState(bond.isActive ? 0 : 1);
 
     const isBondLoading = useSelector<IReduxState, boolean>(state => state.bonding.loading ?? true);
 
@@ -74,18 +74,22 @@ function Bond({ bond }: IBondProps) {
                                 </div>
                             </Box>
 
-                            <div className="bond-one-table">
-                                <div className={classnames("bond-one-table-btn", { active: !view })} onClick={changeView(0)}>
-                                    <p>{t("bond:Mint")}</p>
+                            {bond.isActive && (
+                                <div className="bond-one-table">
+                                    <div className={classnames("bond-one-table-btn", { active: !view })} onClick={changeView(0)}>
+                                        <p>{t("bond:Mint")}</p>
+                                    </div>
+                                    <div className={classnames("bond-one-table-btn", { active: view })} onClick={changeView(1)}>
+                                        <p>{t("bond:Redeem")}</p>
+                                    </div>
                                 </div>
-                                <div className={classnames("bond-one-table-btn", { active: view })} onClick={changeView(1)}>
-                                    <p>{t("bond:Redeem")}</p>
-                                </div>
-                            </div>
+                            )}
 
-                            <TabPanel value={view} index={0}>
-                                <BondPurchase bond={bond} slippage={slippage} recipientAddress={recipientAddress} />
-                            </TabPanel>
+                            {bond.isActive && (
+                                <TabPanel value={view} index={0}>
+                                    <BondPurchase bond={bond} slippage={slippage} recipientAddress={recipientAddress} />
+                                </TabPanel>
+                            )}
 
                             <TabPanel value={view} index={1}>
                                 <BondRedeem bond={bond} />

@@ -1,0 +1,23 @@
+{
+    "StakeTitle": "Redeem",
+    "ConnectYourWalletToStake": "Connect your wallet to redeem MIM tokens!",
+    "Stake": "Redeem",
+    "Unstake": "Unstake",
+    "StakingSB": "Redeem MIM",
+    "UnstakingStakedSB": "Unstaking sSB",
+    "YourStakedBalance": "Your Staked Balance",
+    "YourWrappedStakedBalance": "Your Wrapped Staked Balance",
+    "WrappedTokenEquivalent": "Your Wrapped sSB is equivalent to",
+    "NextRewardAmount": "Next Reward Amount",
+    "NextRewardYield": "Next Reward Yield",
+    "ROIFiveDayRate": "$t(ROI) ($t(FiveDayRate))",
+    "ValueOfYourSB": "Value of Your SB",
+    "ValueOfYourStakedSB": "Value of Your Staked SB",
+    "ValueOfYourWrappedStakedSB": "Value of Your Wrapped Staked SB",
+    "Staking": "redeeming",
+    "Unstaking": "unstaking",
+    "ApproveStaking": "Approve Redeeming",
+    "ApproveUnstaking": "Approve Unstaking",
+    "ApproveNote": "Note: The \"Approve\" transaction is only needed when redeeming for the first time; subsequent redeems only requires you to perform the \"Redeem\" transaction.",
+    "ValueOfYourNextRewardAmount": "Value of Your Next Reward Amount"
+}

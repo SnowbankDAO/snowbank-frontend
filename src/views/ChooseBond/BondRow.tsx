@@ -65,7 +65,7 @@ export function BondDataCard({ bond }: IBondProps) {
                 </div>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
-                        <p>{t("bond:MintBond", { bond: bond.displayName })}</p>
+                        {bond.isActive ? <p>{t("bond:MintBond", { bond: bond.displayName })}</p> : <p>{t("bond:RedeemBond", { bond: bond.displayName })}</p>}
                     </div>
                 </Link>
             </Paper>
@@ -118,7 +118,7 @@ export function BondTableData({ bond }: IBondProps) {
             <TableCell>
                 <Link component={NavLink} to={`/mints/${bond.name}`}>
                     <div className="bond-table-btn">
-                        <p>{t("bond:Mint")}</p>
+                        <p>{bond.isActive ? t("bond:Mint") : t("bond:Redeem")}</p>
                     </div>
                 </Link>
             </TableCell>

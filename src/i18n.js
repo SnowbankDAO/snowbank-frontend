@@ -6,6 +6,7 @@ import bondEN from "./locales/en/bond.json";
 import globeEN from "./locales/en/globe.json";
 import stakeEN from "./locales/en/stake.json";
 import wrapEN from "./locales/en/wrap.json";
+import redeemEN from "./locales/en/redeem.json";
 import commonIT from "./locales/it/common.json";
 
 const resources = {
@@ -15,6 +16,7 @@ const resources = {
         globe: globeEN,
         stake: stakeEN,
         wrap: wrapEN,
+        redeem: redeemEN,
     },
     it: {
         common: commonIT,

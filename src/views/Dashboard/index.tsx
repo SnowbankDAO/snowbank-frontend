@@ -36,6 +36,18 @@ function Dashboard() {
                                         }).format(app.rfv)
                                     )}
                                 </p>
+                                {/* <p className="card-value">
+                                    {isAppLoading ? (
+                                        <Skeleton width="250px" />
+                                    ) : (
+                                        new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            maximumFractionDigits: 2,
+                                            minimumFractionDigits: 2,
+                                        }).format(app.redeemRfv)
+                                    )}
+                                </p> */}
                             </div>
                         </Grid>
                         {/* <Grid item lg={6} md={6} sm={6} xs={12}>
