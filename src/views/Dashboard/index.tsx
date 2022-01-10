@@ -70,6 +70,13 @@ function Dashboard() {
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
+                                <p className="card-title">{t("wsSBPrice")}</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trim(app.marketPrice * Number(app.currentIndex), 2)}`}</p>
+                            </div>
+                        </Grid>
+
+                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                            <div className="dashboard-card">
                                 <p className="card-title">{t("MarketCap")}</p>
                                 <p className="card-value">
                                     {isAppLoading ? (
