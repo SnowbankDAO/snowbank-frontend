@@ -37,7 +37,7 @@ export const getBalances = createAsyncThunk("account/getBalances", async ({ addr
 
     return {
         balances: {
-            wssb: ethers.utils.formatUnits(wssbBalance, "gwei"),
+            wssb: ethers.utils.formatEther(wssbBalance),
             ssb: ethers.utils.formatUnits(ssbBalance, "gwei"),
             sb: ethers.utils.formatUnits(sbBalance, "gwei"),
         },
@@ -63,6 +63,9 @@ interface IUserAccountDetails {
         sb: number;
         ssb: number;
     };
+    wrapping: {
+        ssbAllowance: number;
+    };
 }
 
 export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails", async ({ networkID, provider, address }: ILoadAccountDetails): Promise<IUserAccountDetails> => {
@@ -71,6 +74,7 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     let wssbBalance = 0;
     let stakeAllowance = 0;
     let unstakeAllowance = 0;
+    let wrapAllowance = 0;
     let redeemAllowance = 0;
 
     const addresses = getAddresses(networkID);
@@ -85,6 +89,7 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     if (addresses.SSB_ADDRESS) {
         const ssbContract = new ethers.Contract(addresses.SSB_ADDRESS, MemoTokenContract, provider);
         ssbBalance = await ssbContract.balanceOf(address);
+        wrapAllowance = await ssbContract.allowance(address, addresses.WSSB_ADDRESS);
         unstakeAllowance = await ssbContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
@@ -105,6 +110,9 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         staking: {
             sb: Number(stakeAllowance),
             ssb: Number(unstakeAllowance),
+        },
+        wrapping: {
+            ssbAllowance: Number(wrapAllowance),
         },
     };
 });
@@ -253,6 +261,9 @@ export interface IAccountSlice {
         sb: number;
         ssb: number;
     };
+    wrapping: {
+        ssbAllowance: number;
+    };
     tokens: { [key: string]: IUserTokenDetails };
 }
 
@@ -261,6 +272,7 @@ const initialState: IAccountSlice = {
     bonds: {},
     balances: { wssb: "", ssb: "", sb: "" },
     staking: { sb: 0, ssb: 0 },
+    wrapping: { ssbAllowance: 0 },
     redeeming: { sb: 0 },
     tokens: {},
 };

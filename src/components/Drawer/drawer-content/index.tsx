@@ -69,6 +69,14 @@ function NavContent() {
                         </div>
                     </Link>
 
+                    <Link component={NavLink} id="wrap-nav" to="/wrap" className="button-dapp-menu">
+                        <div className="dapp-menu-item">
+                            <img alt="" src={BorrowIcon} />
+
+                            <p>{t("Wrap")}</p>
+                        </div>
+                    </Link>
+
                     <Link component={NavLink} id="bond-nav" to="/mints" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={BondIcon} />

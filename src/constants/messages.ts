@@ -8,6 +8,8 @@ export const messages = {
     existing_mint: i18n.t("messages.ExistingMint"),
     before_stake: i18n.t("messages.BeforeStake"),
     before_unstake: i18n.t("messages.BeforeUnstake"),
+    before_wrap: i18n.t("messages.BeforeWrap"),
+    before_unwrap: i18n.t("messages.BeforeUnwrap"),
     tx_successfully_send: i18n.t("messages.TxSuccessfullySend"),
     your_balance_updated: i18n.t("messages.YourBalanceUpdated"),
     nothing_to_claim: i18n.t("messages.NothingToClaim"),
