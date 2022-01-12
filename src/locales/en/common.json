@@ -15,6 +15,7 @@
     "ROI": "ROI",
     "FiveDayRate": "5-day rate",
     "SBPrice": "SB Price",
+    "wsSBPrice": "wsSB Price",
     "Price": "Price",
     "TreasuryBalance": "Treasury Balance",
     "MarketCap": "Market Cap",
@@ -50,6 +51,7 @@
     "TimeToRedeem": "{{time}} left to redeem",
     "Rebasing": "Rebasing",
     "AddTokenToWallet": "ADD TOKEN TO WALLET",
+    "RiskFreeValueWSSB": "Wrapped SB RFV (wsRFV)",
     "messages": {
         "PleaseConnect": "Please connect your wallet to the Avalanche network to use Snowbank.",
         "PleaseConnectWallet": "Please connect your wallet.",
