@@ -10,8 +10,10 @@ export { abi as TimeTokenContract } from "./tokens/TimeContract..json";
 export { abi as MimTokenContract } from "./tokens/MimContract.json";
 
 export { abi as BondingCalcContract } from "./BondingCalcContract.json";
+export { abi as WrappingContract } from "./WrappingContract.json";
 export { abi as StakingContract } from "./StakingContract.json";
 export { abi as StakingHelperContract } from "./StakingHelperContract.json";
 export { abi as TreasuryContract } from "./TreasuryContract.json";
 export { abi as ZapinContract } from "./ZapinContract.json";
 export { abi as TraderZapinContract } from "./TraderZapinContract.json";
+export { abi as RedeemContract } from "./Redeem.json";
