@@ -198,7 +198,7 @@ function Stake() {
                                                             className="wrap-card-tab-panel-btn"
                                                             onClick={() => {
                                                                 if (isPendingTxn(pendingTransactions, "approve_wrapping")) return;
-                                                                onSeekApproval("sb");
+                                                                onSeekApproval("ssb");
                                                             }}
                                                         >
                                                             <p>{txnButtonText(pendingTransactions, "approve_wrapping", t("Approve"))}</p>
