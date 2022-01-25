@@ -3,12 +3,17 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import en from "./locales/en";
 import de from "./locales/de";
+import es from "./locales/es";
 
 const resources = {
     en: en,
     de: {
         lang: en.lang,
         ...de,
+    },
+    es: {
+        lang: en.lang,
+        ...es,
     },
 };
 
