@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { StakingContract, MemoTokenContract, TimeTokenContract } from "../../abi";
+import { StakingContract, MemoTokenContract, TimeTokenContract, RedeemContract } from "../../abi";
 import { setAll, getMarketPrice, getTokenPrice } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
@@ -24,10 +24,12 @@ export const loadAppDetails = createAsyncThunk(
         const ohmAmount = 1512.12854088 * ohmPrice;
 
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
+        const redeemContract = new ethers.Contract(addresses.REDEEM_ADDRESS, RedeemContract, provider);
         const currentBlock = await provider.getBlockNumber();
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
         const ssbContract = new ethers.Contract(addresses.SSB_ADDRESS, MemoTokenContract, provider);
         const sbContract = new ethers.Contract(addresses.SB_ADDRESS, TimeTokenContract, provider);
+        const mimContract = new ethers.Contract(addresses.MIM_ADDRESS, TimeTokenContract, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * mimPrice;
 
@@ -37,20 +39,30 @@ export const loadAppDetails = createAsyncThunk(
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
 
+        const redeemRfv = (await redeemContract.RFV()) / Math.pow(10, 9);
+        const redeemSbSent = (await sbContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 9);
+        const redeemMimAvailable = (await mimContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 18);
+
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
+        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1) + redeemMimAvailable;
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
-        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1);
 
-        const sbBondsAmountsPromises = allBonds.map(bond => bond.getSbAmount(networkID, provider));
+        const rfvTreasury = tokenBalances[0] + tokenBalances[1] + redeemMimAvailable + tokenBalances[2] / 2 + tokenBalances[3] / 2;
+
+        const daoSb = await sbContract.balanceOf(addresses.DAO_ADDRESS);
+        const daoSbAmount = Number(ethers.utils.formatUnits(daoSb, "gwei"));
+
+        const sbBondsAmountsPromises = allBonds.filter(bond => bond.name !== "mim_avax_turbine").map(bond => bond.getSbAmount(networkID, provider));
         const sbBondsAmounts = await Promise.all(sbBondsAmountsPromises);
-        const sbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
-        const sbSupply = totalSupply - sbAmount;
 
-        const rfv = treasuryBalance / totalSupply;
+        const LpSbAmount = sbBondsAmounts.reduce((sbAmount0, sbAmount1) => sbAmount0 + sbAmount1, 0);
+        const sbSupply = totalSupply - LpSbAmount - daoSbAmount;
+
+        const rfv = rfvTreasury / (sbSupply - redeemSbSent);
+        const deltaMarketPriceRfv = ((rfv - marketPrice) / rfv) * 100;
 
         const epoch = await stakingContract.epoch();
         const stakingReward = epoch.distribute;
@@ -77,10 +89,14 @@ export const loadAppDetails = createAsyncThunk(
             stakingTVL,
             stakingRebase,
             marketPrice,
+            deltaMarketPriceRfv,
             currentBlockTime,
             nextRebase,
             rfv,
             runway,
+            redeemRfv,
+            redeemSbSent,
+            redeemMimAvailable,
         };
     },
 );
@@ -95,6 +111,7 @@ export interface IAppSlice {
     loading: boolean;
     stakingTVL: number;
     marketPrice: number;
+    deltaMarketPriceRfv: number;
     marketCap: number;
     circSupply: number;
     currentIndex: string;
@@ -109,6 +126,9 @@ export interface IAppSlice {
     totalSupply: number;
     rfv: number;
     runway: number;
+    redeemRfv: number;
+    redeemSbSent: number;
+    redeemMimAvailable: number;
 }
 
 const appSlice = createSlice({

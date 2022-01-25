@@ -1,0 +1,18 @@
+{
+    "WrapTitle": "Wrap",
+    "WrapYourSnowbank": "Wrap Your Staked Snowbank",
+    "ConnectYourWalletToWrap": "Connect your wallet to wrap SB tokens!",
+    "Wrap": "Wrap",
+    "WrappingSB": "Wrapping sSB",
+    "UnwrappingSB": "Unwrapping wsSB",
+    "YourWrappedStakedBalance": "Your Wrapped Staked Balance",
+    "WrappedTokenEquivalent": "Your Wrapped sSB is equivalent to",
+    "ValueOfYourSB": "Value of Your SB",
+    "ValueOfYourStakedSB": "Value of Your Staked SB",
+    "ValueOfYourWrappedStakedSB": "Value of Your Wrapped SB",
+    "YourStakedBalance": "Your Staked Balance",
+    "Wrapping": "wrapping",
+    "Unwrapping": "unwrapping",
+    "ApproveWrapping": "Approve Wrapping",
+    "ApproveNote": "Note: The \"Approve\" transaction is only needed when wrapping/unwrapping for the first time; subsequent wrapping/unwrapping only requires you to perform the \"Wrap\" or \"Unwrap\" transaction."
+}
