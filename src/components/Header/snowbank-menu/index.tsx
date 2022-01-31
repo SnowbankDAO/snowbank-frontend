@@ -64,7 +64,7 @@ function SnowbankMenu() {
                         <div className="tooltip">
                             <Link
                                 className="tooltip-item"
-                                href={`https://www.traderjoexyz.com/#/trade?inputCurrency=0x130966628846bfd36ff31a822705796e8cb8c18d&outputCurrency=${SB_ADDRESS}`}
+                                href={`https://www.traderjoexyz.com/trade?inputCurrency=0x130966628846bfd36ff31a822705796e8cb8c18d&outputCurrency=${SB_ADDRESS}`}
                                 target="_blank"
                             >
                                 <p>{t("BuyOnTraderJoe")}</p>
