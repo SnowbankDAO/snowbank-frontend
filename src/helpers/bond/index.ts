@@ -9,6 +9,7 @@ import AvaxSbIcon from "../../assets/tokens/SB-AVAX.png";
 import MimSdogIcon from "../../assets/tokens/SDOG-MIM.svg";
 import avaxUsdceIcon from "../../assets/tokens/AVAX-USDCe.png";
 import mimAvaxIcon from "../../assets/tokens/MIM-AVAX.png";
+import AvaxFxsIcon from "../../assets/tokens/FXS-AVAX.png";
 
 import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
@@ -57,7 +58,7 @@ export const mimSb = new LPBond({
             reserveAddress: "0x425c45adfb53861e5db8f17d9b072ab60d4404d8",
         },
     },
-    lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
+    lpUrl: "https://www.traderjoexyz.com/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
     isActive: true,
 });
 
@@ -91,7 +92,7 @@ export const mimAvax = new LPBond({
             reserveAddress: "0x781655d802670bba3c89aebaaea59d3182fd755d",
         },
     },
-    lpUrl: "https://traderjoexyz.com/#/pool/AVAX/0x130966628846bfd36ff31a822705796e8cb8c18d",
+    lpUrl: "https://traderjoexyz.com/pool/AVAX/0x130966628846bfd36ff31a822705796e8cb8c18d",
     isActive: true,
 });
 
@@ -124,8 +125,25 @@ export const avaxSb = new CustomLPBond({
             reserveAddress: "0xa3d2cfe49df9d1ea0dc589b69252e1eddc417d6d",
         },
     },
-    lpUrl: "https://traderjoexyz.com/#/pool/AVAX/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
+    lpUrl: "https://traderjoexyz.com/pool/AVAX/0x7d1232b90d3f809a54eeaeebc639c62df8a8942f",
     isActive: true,
 });
 
-export default [mim, wavax, mimSb, avaxSb, mimAvax];
+export const avaxFxs = new CustomLPBond({
+    name: "avax_fxs_turbine",
+    displayName: "FXS-AVAX LP",
+    bondToken: "AVAX",
+    bondIconSvg: AvaxFxsIcon,
+    bondContractABI: LpBondContract,
+    reserveContractAbi: LpReserveContract,
+    networkAddrs: {
+        [Networks.AVAX]: {
+            bondAddress: "0x8548a41A896e0D1163Bf863c807f3C72409B1432",
+            reserveAddress: "0x53942dcce5087f56cf1d68f4e017ca3a793f59a2",
+        },
+    },
+    lpUrl: "https://traderjoexyz.com/pool/AVAX/0x214db107654ff987ad859f34125307783fc8e387",
+    isActive: true,
+});
+
+export default [mim, wavax, mimSb, avaxSb, mimAvax, avaxFxs];

@@ -10,7 +10,7 @@ import { Bond } from "../../helpers/bond/bond";
 import { Networks } from "../../constants/blockchain";
 import { getBondCalculator } from "../../helpers/bond-calculator";
 import { RootState } from "../store";
-import { avaxSb, wavax } from "../../helpers/bond";
+import { avaxSb, avaxFxs, wavax } from "../../helpers/bond";
 import { error, warning, success, info } from "../slices/messages-slice";
 import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
@@ -121,6 +121,9 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         bondPrice = await bondContract.bondPriceInUSD();
 
         if (bond.name === avaxSb.name) {
+            const avaxPrice = getTokenPrice("AVAX");
+            bondPrice = bondPrice * avaxPrice;
+        } else if (bond.name === avaxFxs.name) {
             const avaxPrice = getTokenPrice("AVAX");
             bondPrice = bondPrice * avaxPrice;
         }
