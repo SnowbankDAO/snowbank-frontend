@@ -161,18 +161,29 @@ function Redeem() {
                     <Grid className="stake-card-grid" container direction="column" spacing={2}>
                         <Grid item>
                             <div className="stake-card-header">
-                                <p className="stake-card-header-title-redistribution">Redistribution</p>
+                                <p className="stake-card-header-title-redistribution">Final Redistribution</p>
                             </div>
                             <p className="stake-card-redeem-text">
-                                <b>Swap your SB for a fixed MIM value equal to the SB risk-free value (RFV)</b>. Redistribution event is available from December 23rd to January
-                                3rd. SB swapped for MIM are renounced and will be burnt at the end of the event.
+                                Great products convert unconscious, inchoate problems into conscious, realized opportunities. This is what motivated us to start Snowbank: building
+                                an amazing product for DeFi and the Avalanche ecosystem. We were fortunate enough to build an amazing community, with shared values, and a common
+                                goal. Unfortunately, we have to come to the conclusion that our product isn’t meeting its audience. Interest in rebasing projects is at an all-time
+                                low. Despite our exciting v2 plans, we still believe the opportunity could be better captured by a fresh new project.
+                                <b>Therefore, it is now time for everyone to move on.</b>
                             </p>
                             <p className="stake-card-redeem-text">
-                                <b>The redistribution page and redeem feature will only be available until January 3rd</b>. In order to maintain the risk-free value fixed for the
-                                duration of the rebirth event, staking rewards and minting will be paused on December 23rd.
+                                <b>
+                                    Swap your SB for a fixed USDC value equal to the SB risk-free value (RFV) as of Feb 17th. There is no deadline for the redistribution, you can
+                                    always swap your SB for a fixed USDC value.
+                                </b>
                             </p>
-                            <Link href="https://docs.snowbank.finance/events/rebirth-redistribution" target="_blank" className="stake-card-link-text">
-                                Learn more about Snowbank's Redistribution - Rebirth event and details here.
+                            <p className="stake-card-redeem-text">
+                                <b>
+                                    Liquidity pools will be progressively removed to increase the treasury funds available for redeeming. Do not sell your SB tokens on Trader Joe
+                                    or other decentralized exchanges as low liquidity will negatively impact your selling price.
+                                </b>
+                            </p>
+                            <Link href="https://docs.snowbank.finance/events/final-redistribution" target="_blank" className="stake-card-link-text">
+                                Learn more about Snowbank's Final Redistribution event and details here.
                             </Link>
                         </Grid>
                     </Grid>
@@ -184,7 +195,7 @@ function Redeem() {
                         <Grid item>
                             <div className="stake-card-header">
                                 <p className="stake-card-header-title">{t("redeem:StakeTitle")}</p>
-                                <RedeemTimer />
+                                {/* <RedeemTimer /> */}
                             </div>
                         </Grid>
 
@@ -194,13 +205,13 @@ function Redeem() {
                                     <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="stake-card-apy">
                                             <p className="stake-card-metrics-title">Risk-Free Value</p>
-                                            <p className="stake-card-metrics-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(redeemRfv), 4)} MIM</>}</p>
+                                            <p className="stake-card-metrics-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(redeemRfv), 4)} USDC</>}</p>
                                         </div>
                                     </Grid>
 
                                     <Grid item xs={4} sm={4} md={4} lg={4}>
                                         <div className="stake-card-index">
-                                            <p className="stake-card-metrics-title">Total SB Renounced</p>
+                                            <p className="stake-card-metrics-title">Total SB Deposited</p>
                                             <p className="stake-card-metrics-value">{redeemSbSent !== undefined ? <>{totalSBRedeemed} SB</> : <Skeleton width="150px" />}</p>
                                         </div>
                                     </Grid>
@@ -276,7 +287,7 @@ function Redeem() {
 
                                     <div className="stake-user-data">
                                         <div className="data-row">
-                                            <p className="data-row-name">MIM Value You Will Redeem</p>
+                                            <p className="data-row-name">USDC Value You Will Redeem</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{valueOfMIMRedeemable}</>}</p>
                                         </div>
                                         <div className="data-row">
@@ -291,7 +302,7 @@ function Redeem() {
                                             </p>
                                         </div>
                                         <div className="data-row">
-                                            <p className="data-row-name">{t("Total MIM Redeemable")}</p>
+                                            <p className="data-row-name">Total USDC Redeemable</p>
                                             <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{valueOfRedeemableBalance}</>}</p>
                                         </div>
                                     </div>
