@@ -47,15 +47,11 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
     return (
         <div className={`${classes.topBar} ${!drawe && classes.topBarShift}`}>
             <AppBar position="sticky" className={classes.appBar} elevation={0}>
-                {/* <Box className="dapp-information-box">
+                <Box className="dapp-information-box">
                     <p className="dapp-information-text">
-                        Staking rewards & turbines will restart Tuesday 4th at 4:00 am EST. The redistribution event will end at the same time.{" "}
-                        <a href="https://docs.snowbank.finance/events/rebirth-redistribution" target="_blank">
-                            Learn more about the event here
-                        </a>
-                        .
+                        Staking rewards & turbines have been paused. The final redistribution event is available at the "Final Redistribution" page.
                     </p>
-                </Box> */}
+                </Box>
                 <Toolbar disableGutters className="dapp-topbar">
                     <div onClick={handleDrawerToggle} className="dapp-topbar-slider-btn">
                         <img src={MenuIcon} alt="" />
