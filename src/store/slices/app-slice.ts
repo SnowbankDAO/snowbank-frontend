@@ -38,7 +38,7 @@ export const loadAppDetails = createAsyncThunk(
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
 
-        const redeemRfv = (await redeemContract.RFV()) / Math.pow(10, 9);
+        const redeemRfv = (await redeemContract.RFV()) / Math.pow(10, 2);
         const redeemSbSent = (await sbContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 9);
         const redeemMimAvailable = (await mimContract.balanceOf(addresses.REDEEM_ADDRESS)) / Math.pow(10, 18);
 

@@ -55,17 +55,17 @@ function NavContent() {
                         </div>
                     </Link>
 
-                    {/* <Link component={NavLink} to="/redeem" className="button-dapp-menu">
+                    <Link component={NavLink} to="/redeem" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={RedeemIcon} />
-                            <p>Redistribution</p>
+                            <p>Final Redistribution</p>
                         </div>
-                    </Link> */}
+                    </Link>
 
                     <Link component={NavLink} to="/stake" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={StakeIcon} />
-                            <p>{t("Stake")}</p>
+                            <p>Unstake</p>
                         </div>
                     </Link>
 
@@ -73,7 +73,7 @@ function NavContent() {
                         <div className="dapp-menu-item">
                             <img alt="" src={BorrowIcon} />
 
-                            <p>{t("Wrap")}</p>
+                            <p>Unwrap</p>
                         </div>
                     </Link>
 
@@ -114,22 +114,22 @@ function NavContent() {
                         </div>
                     </Link>
 
-                    <Link component={NavLink} to="/snowglobe" className="button-dapp-menu">
+                    {/* <Link component={NavLink} to="/snowglobe" className="button-dapp-menu">
                         <div className="button-dapp-menu">
                             <div className="dapp-menu-item">
                                 <img alt="" src={Snowglobe} />
                                 <p>{t("Snowglobe")}</p>
                             </div>
                         </div>
-                    </Link>
+                    </Link> */}
 
-                    <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
+                    {/* <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
                         <div className="dapp-menu-item">
                             <img alt="" src={BorrowIcon} />
                             <p>{t("Borrow")}</p>
                             <span>{t("ComingSoon")}</span>
                         </div>
-                    </Link>
+                    </Link> */}
 
                     {/* <Link component={NavLink} id="bond-nav" to="#" className="button-dapp-menu">
                         <div className="dapp-menu-item">
