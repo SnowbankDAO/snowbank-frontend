@@ -158,7 +158,7 @@ function Dashboard() {
                             </div>
                         </Grid> */}
 
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                        {/* <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">{t("TreasuryBalance")}</p>
                                 <p className="card-value">
@@ -174,7 +174,7 @@ function Dashboard() {
                                     )}
                                 </p>
                             </div>
-                        </Grid>
+                        </Grid> */}
 
                         {/* <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
