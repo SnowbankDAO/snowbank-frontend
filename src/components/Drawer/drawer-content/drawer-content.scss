@@ -147,9 +147,11 @@
       }
     }
   }
+  .drawer-footer {
+    margin-top: auto;
+  }
 
   .social-row {
-    margin-top: auto;
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;

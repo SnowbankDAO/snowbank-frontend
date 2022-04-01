@@ -6,6 +6,7 @@ import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit"
 import { JsonRpcProvider } from "@ethersproject/providers";
 import { RootState } from "../store";
 import allBonds from "../../helpers/bond";
+import i18n from "../../i18n";
 
 interface ILoadAppDetails {
     networkID: number;
@@ -104,10 +105,12 @@ export const loadAppDetails = createAsyncThunk(
 );
 
 const initialState = {
+    language: i18n.resolvedLanguage,
     loading: true,
 };
 
 export interface IAppSlice {
+    language: string;
     loading: boolean;
     stakingTVL: number;
     marketPrice: number;
@@ -138,6 +141,9 @@ const appSlice = createSlice({
         fetchAppSuccess(state, action) {
             setAll(state, action.payload);
         },
+        changeLanguage(state, action) {
+            state.language = action.payload;
+        },
     },
     extraReducers: builder => {
         builder
@@ -159,6 +165,6 @@ const baseInfo = (state: RootState) => state.app;
 
 export default appSlice.reducer;
 
-export const { fetchAppSuccess } = appSlice.actions;
+export const { fetchAppSuccess, changeLanguage } = appSlice.actions;
 
 export const getAppState = createSelector(baseInfo, app => app);
